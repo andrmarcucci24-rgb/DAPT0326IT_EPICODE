@@ -1,4 +1,6 @@
-README – Log delle operazioni svolte e analisi dati finale
+README
+# Log delle operazioni svolte e analisi dati 
+# Progetto Finale M2 
 
 
 
