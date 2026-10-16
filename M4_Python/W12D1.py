@@ -242,3 +242,190 @@ print("Score test :", model.score(X_test_scaled, y_test))
 # individuare il maggior numero possibile di clienti a rischio. La precision resta
 # comunque da monitorare, per non spendere troppo in campagne di retention inutili.
 
+
+### Segmentazione con K-Means e churn per segmento 
+## Esercizio 4 - DF clienti con tre colonne aggiuntive generate con numpy: recncy(giorni), fequency(acquisti) e monetary (euro). 
+
+# 1. Standardizzare recency e frequency e monetaru con StandardScaler, calcolare inertia_ per k da 1 a 10 con K-means(n_int = 10, random state = 42) e disegnare il grafico con plt.plot(). 
+from sklearn.cluster import KMeans
+from sklearn.metrics import recall_score
+
+# K-Means misura distanze euclidee. monetary è nell’ordine delle centinaia o migliaia e frequency in quello delle unità, quindi senza standardizzare monetary dominerebbe tutte le distanze. inertia_ è la somma delle distanze al quadrato tra ogni punto e il centroide del suo cluster. 
+# Con più cluster diminuisce sempre, ma dopo il k giusto la discesa rallenta e il grafico forma il “gomito"
+
+def aggiungi_rfm(df, rng):
+    """Aggiunge al DataFrame le colonne RFM (recency, frequency, monetary).
+
+    Per ottenere gruppi riconoscibili, ogni cliente viene assegnato a uno
+    di 4 profili latenti (non salvati nel df) e le tre variabili vengono
+    generate attorno alla media tipica del profilo.
+
+    Parametri
+    ----------
+    df : pd.DataFrame
+        DataFrame dei clienti (non viene modificato, lavoro su una copia).
+    rng : np.random.Generator
+        Generatore di numeri casuali, per la riproducibilità.
+
+    Ritorna
+    -------
+    pd.DataFrame
+        Copia di df con le colonne recency, frequency e monetary.
+    """
+    df = df.copy()
+    n = len(df)
+
+    # profilo latente di ogni cliente: 0 = top, 1 = nuovi, 2 = regolari, 3 = dormienti
+    profilo = rng.choice(4, size=n, p=[0.25, 0.25, 0.30, 0.20])
+
+    # medie tipiche per profilo (nell'ordine 0, 1, 2, 3)
+    rec_media = np.array([20, 40, 60, 250])      # giorni dall'ultimo acquisto
+    freq_media = np.array([25, 3, 12, 2])        # numero di acquisti
+    mon_media = np.array([900, 120, 400, 80])    # euro spesi
+
+    # indicizzare l'array con "profilo" assegna a ogni cliente la media del suo profilo
+    df["recency"] = np.clip(rng.normal(rec_media[profilo], 15), 1, None).round().astype(int)
+    df["frequency"] = rng.poisson(freq_media[profilo])
+    df["monetary"] = np.clip(
+        rng.normal(mon_media[profilo], mon_media[profilo] * 0.2), 10, None
+    ).round(2)
+    return df
+
+
+def calcola_inertia(X_scaled, k_max=10):
+    """Calcola l'inertia di K-Means per k = 1, ..., k_max.
+
+    Parametri
+    ----------
+    X_scaled : np.ndarray
+        Dati già standardizzati.
+    k_max : int
+        Massimo numero di cluster da provare.
+
+    Ritorna
+    -------
+    list[float]
+        Inertia per ogni k, in ordine crescente di k.
+    """
+    inertie = []
+    for k in range(1, k_max + 1):
+        # n_init=10: l'algoritmo parte da 10 posizioni iniziali diverse dei centroidi
+        # e tiene la soluzione migliore (evita minimi locali sfortunati)
+        km = KMeans(n_clusters=k, n_init=10, random_state=42)
+        km.fit(X_scaled)
+        inertie.append(km.inertia_)
+    return inertie
+
+
+# aggiungo RFM a clienti (X e y dell'esercizio 3 restano invariati)
+clienti = aggiungi_rfm(clienti, rng)
+rfm = ["recency", "frequency", "monetary"]
+
+# standardizzo: stesso scaler "fit_transform" perché qui non c'è un test set
+scaler_rfm = StandardScaler()
+rfm_scaled = scaler_rfm.fit_transform(clienti[rfm])
+
+# curva del gomito
+inertie = calcola_inertia(rfm_scaled)
+plt.figure()
+plt.plot(range(1, 11), inertie, marker="o")
+plt.xlabel("Numero di cluster k")
+plt.ylabel("Inertia")
+plt.title("Metodo del gomito")
+plt.show()
+
+# 2. scegliere k in base al gomito , tra 3 e 6 e assegnare i clusete con fit_predict() in una nuova colonna cluster.
+
+K = 3  # scelto dal gomito (deve stare tra 3 e 6)
+
+kmeans = KMeans(n_clusters=K, n_init=10, random_state=42)
+clienti["cluster"] = kmeans.fit_predict(rfm_scaled)
+
+print(clienti["cluster"].value_counts().sort_index())
+
+# 3. profilare i cluster con groupby("cluster") sulle feature originali, assegnare a ogni cluster un nome descrittivo (es. fedeli, dorminenti) e calcolare la quota di churn per cluster. 
+profilo = clienti.groupby("cluster").agg(
+    n_clienti=("cluster", "size"),
+    recency=("recency", "mean"),
+    frequency=("frequency", "mean"),
+    monetary=("monetary", "mean"),
+    quota_churn=("churn", "mean"),
+).round(2)
+
+print(profilo)
+
+# nomi descrittivi, scelti leggendo la tabella dei profili (medie delle feature originali)
+nomi_cluster = {
+    0: "Regolari",    # valori medi su recency, frequency e monetary
+    1: "Fedeli",      # recency bassa, frequency e monetary alti
+    2: "Dormienti",   # recency molto alta, frequency e monetary bassi
+}
+
+# map() sostituisce ogni numero di cluster con il nome corrispondente
+clienti["segmento"] = clienti["cluster"].map(nomi_cluster)
+
+# quota di churn per segmento (la media di una colonna 0/1 è la proporzione di 1)
+print(clienti.groupby("segmento")["churn"].mean().round(3))
+
+# 4. aggiungere la colonna cluster come dummy alle feature della regressione logistica, riaddestrare il modello e confrontare la recall sul test set con quella dell'esercizio 3. 
+
+def valuta_recall(X, y, soglia=0.5):
+    """Addestra una regressione logistica e restituisce la recall sul test set.
+
+    Ripete la pipeline dell'esercizio 2: split stratificato, standardizzazione
+    (fit solo sul train), LogisticRegression.
+
+    Parametri
+    ----------
+    X : pd.DataFrame
+        Feature del modello.
+    y : pd.Series
+        Target (churn 0/1).
+    soglia : float
+        Soglia di probabilità oltre la quale si prevede churn.
+
+    Ritorna
+    -------
+    float
+        Recall sulla classe 1 (churn) nel test set.
+    """
+    X_tr, X_te, y_tr, y_te = train_test_split(
+        X, y, test_size=0.20, stratify=y, random_state=42
+    )
+    sc = StandardScaler()
+    X_tr_s = sc.fit_transform(X_tr)   # fit solo sul train (niente data leakage)
+    X_te_s = sc.transform(X_te)
+
+    modello = LogisticRegression(max_iter=1000).fit(X_tr_s, y_tr)
+    prob = modello.predict_proba(X_te_s)[:, 1]
+    y_prev = (prob >= soglia).astype(int)
+    return recall_score(y_te, y_prev, zero_division=0)
+
+
+# dummy del cluster (k-1 colonne, la prima è il riferimento)
+cluster_dummies = pd.get_dummies(
+    clienti["cluster"], prefix="cluster", drop_first=True, dtype=int
+)
+X_cluster = pd.concat([X, cluster_dummies], axis=1)
+
+print("Recall senza cluster:", valuta_recall(X, y))
+print("Recall con cluster  :", valuta_recall(X_cluster, y))
+
+
+
+## Definizione: Centroide e Inerzia e spiegare perché K-means non richiede una colonna y e nemmeno il train/test split. 
+# Centroide: punto medio di un cluster, cioè la media delle feature di tutte le
+# osservazioni assegnate a quel cluster. K-Means assegna ogni punto al centroide
+# più vicino, poi ricalcola i centroidi, e ripete finché non cambiano più.
+#
+# Inerzia (inertia_): somma dei quadrati delle distanze tra ogni punto e il
+# centroide del suo cluster. Misura quanto i cluster sono compatti: più è bassa,
+# più i punti sono vicini al proprio centroide. Diminuisce sempre al crescere di k,
+# quindi non si minimizza ma si usa per cercare il gomito.
+#
+# K-Means non richiede y perché è un algoritmo non supervisionato: non deve
+# prevedere un target noto, ma scoprire gruppi nei dati in base alla sola
+# somiglianza tra le feature. Per lo stesso motivo non serve il train/test split:
+# non c'è una previsione da valutare su dati mai visti, né un target da cui
+# potrebbe "trapelare" informazione. Lo split resta necessario solo quando poi
+# si addestra un modello supervisionato, come nel punto 4.
