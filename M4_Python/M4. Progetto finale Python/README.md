@@ -29,7 +29,7 @@ Un'azienda vende prodotti (categorie come Outdoor, Giochi da tavolo e Giocattoli
 - Quali rivenditori rischiano di smettere di ordinare (**churn**)?
 - Si possono raggruppare i rivenditori in segmenti omogenei per comportamento d'acquisto, e i segmenti hanno un churn diverso?
 
-Il notebook risponde a queste domande partendo da quattro file grezzi e arrivando a modelli predittivi, con commenti e definizioni teoriche scritte per un livello principiante.
+Il notebook risponde a queste domande partendo da quattro file grezzi e arrivando a modelli predittivi, con commenti e definizioni teoriche.
 
 ---
 
@@ -53,15 +53,12 @@ Qualità dei dati: `Quantity` e `SalesAmount` hanno ciascuna circa il 5% di valo
 ```
 .
 ├── README.md
-├── <nome_del_notebook>.ipynb
+├── M4. Progetto_finale_Python.ipynb
 ├── ESERCIZIO_M4-4-2_traccia_finale-sales.json
 ├── ESERCIZIO_M4-4-2_traccia_finale-products.csv
 ├── ESERCIZIO_M4-4-2_traccia_finale-regions.xlsx
 └── ESERCIZIO_M4-4-2_traccia_finale-resellers.csv
 ```
-
-> Sostituisci `<nome_del_notebook>` con il nome reale del tuo file `.ipynb`.
-
 ---
 
 ## Task svolti
@@ -163,11 +160,11 @@ Valori riportati nei commenti del notebook (gli altri risultati si ottengono ese
 
 ### 2. Clona la repository
 ```bash
-git clone https://github.com/<tuo-utente>/<nome-repository>.git
-cd <nome-repository>
+git clone https://github.com/andrmarcucci24-rgb/DAPT0326IT_EPICODE.git
+cd "DAPT0326IT_EPICODE/M4_Python/M4. Progetto finale Python"
 ```
 
-### 3. (Consigliato) Crea un ambiente virtuale
+### 3. Crea un ambiente virtuale
 ```bash
 python -m venv venv
 
@@ -175,24 +172,13 @@ python -m venv venv
 venv\Scripts\activate
 # macOS / Linux
 source venv/bin/activate
+
 ```
 
-### 4. Installa le dipendenze
-```bash
-pip install pandas numpy matplotlib seaborn plotly scikit-learn openpyxl jupyter
-```
-
-`openpyxl` serve a `pd.read_excel()` per leggere il file `.xlsx` delle regioni.
-
-Se usi Anaconda, la maggior parte dei pacchetti è già inclusa; potrebbe mancare solo `plotly`:
-```bash
-conda install -c plotly plotly
-```
-
-### 5. Verifica i file dei dati
+### 4. Verifica i file dei dati
 I quattro file `ESERCIZIO_M4-4-2_traccia_finale-*` devono trovarsi nella **stessa cartella del notebook**, perché il codice li legge con percorsi relativi.
 
-### 6. Avvia il notebook
+### 5. Avvia il notebook
 ```bash
 jupyter notebook
 ```
@@ -205,17 +191,7 @@ Apri il file `.ipynb` ed esegui le celle **dall'alto verso il basso** (`Shift + 
 - **Ordine delle celle:** le celle dipendono l'una dall'altra (ad esempio `final_merge`, `monthly`, `mensile`, `X`, `y` vengono riusati più avanti). Esegui il notebook in ordine; se riavvii il kernel, riparti dall'inizio.
 - **Celle del Task 7:** contengono volutamente il **codice originale con errori**. Il Caso 3 usa `df`, che nel notebook non esiste, e dà errore. Il Caso 2 usa `X` e `y`, che a quel punto hanno il valore dell'ultimo task. Se usi "Esegui tutto", queste celle possono interrompere l'esecuzione: eseguile singolarmente o saltale.
 - **Variabili `sales` e `Sales`:** nel Task 3a l'istruzione `Sales = sales` crea un secondo nome per lo **stesso** oggetto, non una copia. L'imputazione di `Quantity` si riflette quindi anche su `sales`; la successiva `dropna()` crea invece un nuovo DataFrame. Per una vera copia di backup usa `Sales = sales.copy()`.
-- **Warning su Windows:** `KMeans` e `joblib` possono mostrare avvisi su memory leak (MKL) e sul conteggio dei core fisici. Sono innocui. Per eliminarli, esegui all'inizio del notebook, prima di importare scikit-learn:
-  ```python
-  import os
-  os.environ["OMP_NUM_THREADS"] = "2"
-  os.environ["LOKY_MAX_CPU_COUNT"] = "4"   # numero di core del tuo PC
-  ```
-- **Grafici Plotly:** se non compaiono in Jupyter, imposta
-  ```python
-  import plotly.io as pio
-  pio.renderers.default = "notebook"   # oppure "browser", "vscode"
-  ```
+- **Warning su Windows:** `KMeans` e `joblib` possono mostrare avvisi su memory leak (MKL) e sul conteggio dei core fisici.
 - **Riproducibilità:** gli split e i modelli usano `random_state=42`, quindi i risultati sono ripetibili.
 - **Interpretazione:** i nomi dei cluster (fedeli, occasionali, a rischio) sono assegnati guardando i profili; le etichette numeriche 0, 1, 2 sono arbitrarie e possono cambiare se cambiano dati o impostazioni.
 
@@ -223,19 +199,19 @@ Apri il file `.ipynb` ed esegui le celle **dall'alto verso il basso** (`Shift + 
 
 ## Versioning con Git e GitHub
 
-Flusso minimo per pubblicare il progetto:
+Il progetto è nella cartella `M4_Python/M4. Progetto finale Python` della repository [DAPT0326IT_EPICODE](https://github.com/andrmarcucci24-rgb/DAPT0326IT_EPICODE), branch `main`.
+
+Flusso minimo per pubblicare o aggiornare il progetto:
 
 ```bash
-git init
-git add README.md <nome_del_notebook>.ipynb
-git add ESERCIZIO_M4-4-2_traccia_finale-*
+git clone https://github.com/andrmarcucci24-rgb/DAPT0326IT_EPICODE.git
+cd "DAPT0326IT_EPICODE/M4_Python/M4. Progetto finale Python"
+git add .
 git commit -m "Aggiunge notebook, dataset e README"
-git branch -M main
-git remote add origin https://github.com/<tuo-utente>/<nome-repository>.git
-git push -u origin main
+git push origin main
 ```
 
-Per le modifiche successive, usa commit piccoli con messaggi chiari (ad esempio `Corregge gestione NaN nel Caso 1`).
+Se la repository è già clonata sul tuo PC, salta le prime due righe ed esegui solo `git add`, `git commit` e `git push`. Se `git push` segnala modifiche presenti su GitHub che non hai in locale, esegui prima `git pull`.
 
 ---
 
