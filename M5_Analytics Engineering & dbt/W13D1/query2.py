@@ -1,0 +1,1 @@
+### 2. Creare un flusso di analisi dati con DuckDB
