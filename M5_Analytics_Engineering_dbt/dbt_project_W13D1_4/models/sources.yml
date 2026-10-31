@@ -1,0 +1,25 @@
+sources:
+  - name: flusso
+    schema: main
+    tables:
+      - name: clienti
+        columns:
+          - name: customer_id
+            data_tests:
+              - not_null
+              - unique
+      - name: ordini
+        columns:
+          - name: order_id
+            data_tests:
+              - not_null
+              - unique
+          - name: customer_id
+            data_tests:
+              - not_null
+              - relationships:
+                  arguments:
+                    to: source('flusso', 'clienti')
+                    field: customer_id
+                  config:
+                    severity: warn

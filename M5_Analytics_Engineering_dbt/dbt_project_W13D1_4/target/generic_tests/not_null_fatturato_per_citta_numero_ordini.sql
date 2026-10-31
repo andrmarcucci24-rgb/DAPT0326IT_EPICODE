@@ -1,0 +1,1 @@
+{{ test_not_null(column_name="numero_ordini", model=get_where_subquery(ref('fatturato_per_citta'))) }}

@@ -1,0 +1,10 @@
+models:
+  - name: fatturato_per_citta
+    description: "Fatturato e numero di ordini per città, calcolati unendo ordini e clienti"
+    columns:
+      - name: city
+        description: "Città del cliente"
+      - name: fatturato
+        description: "Somma degli importi degli ordini della città"
+      - name: numero_ordini
+        description: "Numero di ordini della città"

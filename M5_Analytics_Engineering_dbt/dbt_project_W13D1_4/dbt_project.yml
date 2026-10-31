@@ -1,0 +1,12 @@
+# Nome del progetto
+name: 'analisi_citta'
+
+# Versione del progetto
+version: '1.0.0'
+
+# Nome del profilo di connessione da usare (si crea al passo 3).
+# Deve coincidere con il nome del profilo in profiles.yml
+profile: 'analisi_citta'
+
+# Cartella in cui dbt cerca i modelli
+model-paths: ["models"]
