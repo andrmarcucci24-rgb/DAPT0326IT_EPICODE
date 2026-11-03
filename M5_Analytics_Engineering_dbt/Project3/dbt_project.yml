@@ -1,0 +1,19 @@
+# Nome del progetto
+name: 'ecommerce_dev_prod'
+
+# Versione del progetto
+version: '1.0.0'
+
+# Nome del profilo di connessione da usare.
+# Deve coincidere con il nome del profilo in profiles.yml
+profile: 'ecommerce_dev_prod'
+
+# Cartella in cui dbt cerca i modelli
+model-paths: ["models"]
+
+# I modelli della cartella staging vengono scritti come tabelle:
+# così nel database trovi dati veri, non solo query salvate
+models:
+  ecommerce_dev_prod:
+    staging:
+      +materialized: table

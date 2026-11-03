@@ -1,0 +1,21 @@
+{
+  "target_dir": "C:\\dbt_lab\\Project3\\target",
+  "fingerprints": {
+    "run_results.json": {
+      "size": 3128,
+      "modified_secs": 1793735793
+    },
+    "semantic_manifest.json": {
+      "size": 234,
+      "modified_secs": 1793735793
+    },
+    "manifest.json": {
+      "size": 512459,
+      "modified_secs": 1793735793
+    }
+  },
+  "write_source": "DirectWrite",
+  "context_dir": null,
+  "context_fingerprints": {},
+  "source_identity": null
+}

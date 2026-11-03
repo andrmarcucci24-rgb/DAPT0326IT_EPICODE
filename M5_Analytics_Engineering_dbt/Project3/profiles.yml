@@ -1,0 +1,13 @@
+# Nome del profilo: deve coincidere con "profile" in dbt_project.yml
+ecommerce_dev_prod:
+  # Target usato se non scrivi --target: il più sicuro, cioè dev
+  target: dev
+  outputs:
+    # Development: la copia per provare e sbagliare senza conseguenze
+    dev:
+      type: duckdb
+      path: ./ecommerce_dev.duckdb
+    # Production: la copia con i dati "ufficiali"
+    prod:
+      type: duckdb
+      path: ./ecommerce_prod.duckdb

@@ -1,0 +1,1 @@
+select * from "ecommerce_prod"."main"."raw_order_items"

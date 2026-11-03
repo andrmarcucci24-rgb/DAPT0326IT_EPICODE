@@ -1,0 +1,1 @@
+select * from {{ source('ecommerce', 'raw_customers') }}
