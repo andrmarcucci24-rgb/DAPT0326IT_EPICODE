@@ -1,1 +1,0 @@
-{{ test_relationships(column_name="customer_id", field="customer_id", model=get_where_subquery(source('flusso', 'ordini')), to=source('flusso', 'clienti')) }}{{ config({"meta":{},"severity":"WARN","tags":[]}) }}

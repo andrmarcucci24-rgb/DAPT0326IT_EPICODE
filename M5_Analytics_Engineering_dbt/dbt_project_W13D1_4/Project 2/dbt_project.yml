@@ -1,0 +1,13 @@
+# Nome del progetto
+name: 'controllo_ordini'
+
+# Versione del progetto
+version: '1.0.0'
+
+# Nome del profilo di connessione da usare.
+# Deve coincidere con il nome del profilo in profiles.yml
+profile: 'controllo_ordini'
+
+# Cartelle in cui dbt cerca modelli e test
+model-paths: ["models"]
+test-paths: ["tests"]
