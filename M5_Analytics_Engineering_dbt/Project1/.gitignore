@@ -1,0 +1,10 @@
+dbt_packages/
+dbt_internal_packages/
+logs/
+target/
+.env
+.user.yml
+
+# Database DuckDB (si rigenera con carica_csv.py)
+*.duckdb
+*.duckdb.wal
