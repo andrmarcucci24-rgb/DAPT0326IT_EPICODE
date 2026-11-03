@@ -1,0 +1,251 @@
+==================== 2026-11-03T19:27:29.564019Z | 01a1a2e1-7f16-7293-b45a-01926ec76881 ====================
+19:27:29.564341 [info ]: dbt 2.0.9
+19:27:29.565253 [info ]: Started loading project
+19:27:29.571609 [info ]: Loading profiles.yml
+19:27:29.572971 [info ]: Finished loading project [  0.01s]
+19:27:29.573272 [info ]: Started debugging
+19:27:29.573526 [info ]: Debugging profile: dev
+19:27:29.573796 [info ]: Debugging dbt version: 2.0.9
+19:27:29.574030 [info ]: Debugging platform: windows x86_64 (windows)
+19:27:29.574278 [info ]: Debugging adapter type: duckdb (remote)
+19:27:29.625931 [info ]: Debugging dependencies:
+  git: OK
+19:27:29.626268 [info ]: Debugging connection:
+  "path": "./ecommerce.duckdb"
+19:27:29.629011 [debug]: DuckDB driver resolved: duckdb 1.5.4
+19:27:29.669333 [debug]: borrow_tlocal_connection() took 42.3968ms
+19:27:29.671167 [debug]: create_debug_span(...).entered() took 59.3µs
+19:27:29.671870 [debug]: stmt.execute() (submit+wait_for_completion, returns reader) took 187.1µs
+19:27:29.671896 [debug]: reader.schema() took 10.4µs
+19:27:29.671924 [debug]: do_execute(conn) (closure: stmt.execute + schema + batch loop) took 736.8µs
+19:27:29.671976 [debug]: concat_batches + normalize_result_column_names took 45.7µs
+19:27:29.672001 [debug]: record_current_span_status_from_attrs took 16.6µs
+19:27:29.672016 [debug]: Query executed on node unknown:
+select 1 as id
+19:27:29.672038 [debug]: drop(query_span_guard) (span exit/export) took 29.1µs
+19:27:29.672163 [debug]: adapter.execute() (full call, incl. adbc_execute_with_options) took 2.8041ms
+19:27:29.672242 [info ]: Debugging connection test: OK
+19:27:29.675432 [info ]: Debugged All checks passed!
+19:27:29.675979 [info ]: Finished debugging [  0.10s]
+19:27:30.283207 [info ]: 
+==================== Execution Summary =====================
+Finished 'debug' successfully for target 'dev' [719ms]
+==================== 2026-11-03T19:31:09.902928Z | 01a1a2e4-dbca-7b00-ae4d-b3eb507d13b4 ====================
+19:31:09.903247 [info ]: dbt 2.0.9
+19:31:09.904146 [info ]: Started loading project
+19:31:09.910835 [info ]: Loading profiles.yml
+19:31:09.918764 [debug]:    Started loading packages
+19:31:09.921598 [debug]:     Loaded [  0.00s] packages
+19:31:09.923215 [info ]: Finished loading project [  0.02s]
+19:31:09.938552 [info ]: Started parsing (2 nodes)
+19:31:09.982539 [debug]: Finished parsing models/sources.yml [  0.00s]
+19:31:09.983565 [debug]:    Started building model nodes
+19:31:09.983594 [debug]:    Started building model nodes
+19:31:09.983625 [debug]:   Finished [  0.00s] building model nodes
+19:31:09.983643 [debug]:   Finished [  0.00s] building model nodes
+19:31:09.984468 [debug]:    Started resolving data tests
+19:31:09.984549 [debug]:   Finished [  0.00s] resolving data tests
+19:31:09.984624 [debug]:    Started building model nodes
+19:31:09.984666 [debug]:   Finished [  0.00s] building model nodes
+19:31:09.984717 [debug]:    Started resolving data tests
+19:31:09.984768 [debug]:   Finished [  0.00s] resolving data tests
+19:31:09.985339 [debug]:    Started resolving data tests
+19:31:09.988097 [debug]: Finished parsing tests/assert_order_amount_consistency.sql [  0.00s]
+19:31:09.990376 [debug]:   Finished [  0.01s] resolving data tests
+19:31:09.991157 [debug]:    Started typechecking macros
+19:31:10.200830 [debug]:   Finished [  0.21s] typechecking macros
+19:31:10.202322 [info ]: Finished parsing [  0.26s] (2 nodes, 0 skipped, 0 errors)
+19:31:10.204069 [info ]: Started scheduling
+19:31:10.204507 [info ]: Finished scheduling [  0.00s]
+19:31:10.208913 [debug]: Initializing schema store with entry: Frontier(CanonicalFqn { catalog: "ecommerce", schema: "main", table: "raw_orders" }) and interval: None
+19:31:10.211573 [info ]: Started building task graph
+19:31:10.212095 [info ]: Finished building task graph [  0.00s]
+19:31:10.215556 [info ]: Started rendering (1 nodes)
+19:31:10.215744 [info ]: Started test main_dbt_test__audit.assert_order_amount_consistency
+19:31:10.215771 [debug]: Started rendering test main_dbt_test__audit.assert_order_amount_consistency
+19:31:10.222140 [debug]: Compiled SQL for node test.controllo_ordini.assert_order_amount_consistency at target\compiled\controllo_ordini\tests\assert_order_amount_consistency.sql
+19:31:10.222683 [debug]: Finished rendering [  0.01s] test main_dbt_test__audit.assert_order_amount_consistency [success]
+19:31:10.223376 [info ]: Finished rendering [  0.01s] (1 nodes, 0 skipped, 0 errors)
+19:31:10.223788 [info ]: Started analyzing (1 nodes)
+19:31:10.223928 [debug]: Started analyzing test main_dbt_test__audit.assert_order_amount_consistency
+19:31:10.245201 [debug]: Finished analyzing [  0.02s] test main_dbt_test__audit.assert_order_amount_consistency [success]
+19:31:10.245578 [info ]: Finished analyzing [  0.02s] (1 nodes, 0 skipped, 0 errors)
+19:31:10.245919 [info ]: Started running (1 nodes)
+19:31:10.246055 [info ]: Started running test main_dbt_test__audit.assert_order_amount_consistency
+19:31:10.248867 [debug]: Writing runtime sql for node "test.controllo_ordini.assert_order_amount_consistency"
+19:31:10.253833 [debug]: DuckDB driver resolved: duckdb 1.5.4
+19:31:10.283164 [debug]: create_debug_span(...).entered() took 45.9µs
+19:31:10.291834 [debug]: stmt.execute() (submit+wait_for_completion, returns reader) took 3.6802ms
+19:31:10.291868 [debug]: reader.schema() took 2.8µs
+19:31:10.292014 [debug]: batch-consume loop (for res in reader) took 139.8µs
+19:31:10.292073 [debug]: do_execute(conn) (closure: stmt.execute + schema + batch loop) took 8.8865ms
+19:31:10.292118 [debug]: concat_batches + normalize_result_column_names took 35.8µs
+19:31:10.292142 [debug]: record_current_span_status_from_attrs took 13.7µs
+19:31:10.292156 [debug]: Query executed on node test.controllo_ordini.assert_order_amount_consistency:
+/* {"app": "dbt", "dbt_version": "2.0.0", "node_id": "test.controllo_ordini.assert_order_amount_consistency", "profile_name": "controllo_ordini", "target_name": "dev"} */
+
+    
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  -- Restituisce gli ordini in cui l'importo non corrisponde a quantità x prezzo unitario.
+-- Se la query restituisce righe, il test fallisce.
+select
+    order_id,
+    customer_id,
+    quantity,
+    unit_price,
+    amount,
+    quantity * unit_price as amount_atteso
+from "ecommerce"."main"."raw_orders"
+where abs(amount - quantity * unit_price) > 0.01
+  
+  
+      
+    ) dbt_internal_test
+19:31:10.292189 [debug]: drop(query_span_guard) (span exit/export) took 40.8µs
+19:31:10.293852 [info ]: Finished running [  0.05s] test main_dbt_test__audit.assert_order_amount_consistency [fail]
+19:31:10.294342 [info ]: Finished running [  0.05s] (1 nodes, 0 skipped, 1 errors)
+19:31:10.294766 [info ]:     Failed test  assert_order_amount_consistency (tests/assert_order_amount_consistency.sql) [1 of 1 in 0.07s]
+19:31:10.294766 [info ]: Test failed (1 failed row(s)): assert_order_amount_consistency
+19:31:10.510314 [info ]: 
+==================== Execution Summary =====================
+Finished 'test' with 1 error for target 'dev' [607ms]
+Processed: 1 test
+Summary: 1 total | 1 error
+==================== 2026-11-03T19:32:28.939972Z | 01a1a2e6-1087-7860-a590-808a883fa3d6 ====================
+19:32:28.940293 [info ]: dbt 2.0.9
+19:32:28.941206 [info ]: Started loading project
+19:32:28.947391 [info ]: Loading profiles.yml
+19:32:28.952893 [debug]:    Started loading packages
+19:32:28.956211 [debug]:     Loaded [  0.00s] packages
+19:32:28.957809 [info ]: Finished loading project [  0.02s]
+19:32:28.958631 [info ]: Started parsing (3 nodes)
+19:32:29.001534 [debug]: Finished parsing models/sources.yml [  0.00s]
+19:32:29.002178 [debug]:    Started building model nodes
+19:32:29.002229 [debug]:    Started building model nodes
+19:32:29.002267 [debug]:   Finished [  0.00s] building model nodes
+19:32:29.002267 [debug]:   Finished [  0.00s] building model nodes
+19:32:29.003498 [debug]:    Started resolving data tests
+19:32:29.003616 [debug]:   Finished [  0.00s] resolving data tests
+19:32:29.003774 [debug]:    Started resolving data tests
+19:32:29.003833 [debug]:   Finished [  0.00s] resolving data tests
+19:32:29.004231 [debug]:    Started building model nodes
+19:32:29.004277 [debug]:   Finished [  0.00s] building model nodes
+19:32:29.004930 [debug]:    Started resolving data tests
+19:32:29.007203 [debug]: Finished parsing tests/assert_no_negative_unit_price.sql [  0.00s]
+19:32:29.008324 [debug]: Finished parsing tests/assert_order_amount_consistency.sql [  0.00s]
+19:32:29.010309 [debug]:   Finished [  0.01s] resolving data tests
+19:32:29.011216 [debug]:    Started typechecking macros
+19:32:29.196354 [debug]:   Finished [  0.19s] typechecking macros
+19:32:29.197610 [info ]: Finished parsing [  0.24s] (3 nodes, 0 skipped, 0 errors)
+19:32:29.199338 [info ]: Started scheduling
+19:32:29.199619 [info ]: Finished scheduling [  0.00s]
+19:32:29.204042 [debug]: Initializing schema store with entry: Frontier(CanonicalFqn { catalog: "ecommerce", schema: "main", table: "raw_orders" }) and interval: None
+19:32:29.206400 [info ]: Started building task graph
+19:32:29.206792 [info ]: Finished building task graph [  0.00s]
+19:32:29.210098 [info ]: Started rendering (2 nodes)
+19:32:29.210260 [info ]: Started test main_dbt_test__audit.assert_order_amount_consistency
+19:32:29.210292 [debug]: Started rendering test main_dbt_test__audit.assert_order_amount_consistency
+19:32:29.210361 [info ]: Started test main_dbt_test__audit.assert_no_negative_unit_price
+19:32:29.210371 [debug]: Started rendering test main_dbt_test__audit.assert_no_negative_unit_price
+19:32:29.215188 [debug]: Compiled SQL for node test.controllo_ordini.assert_order_amount_consistency at target\compiled\controllo_ordini\tests\assert_order_amount_consistency.sql
+19:32:29.215220 [debug]: Compiled SQL for node test.controllo_ordini.assert_no_negative_unit_price at target\compiled\controllo_ordini\tests\assert_no_negative_unit_price.sql
+19:32:29.215542 [debug]: Finished rendering [  0.01s] test main_dbt_test__audit.assert_no_negative_unit_price [success]
+19:32:29.216012 [info ]: Started analyzing (2 nodes)
+19:32:29.216131 [debug]: Started analyzing test main_dbt_test__audit.assert_no_negative_unit_price
+19:32:29.216218 [debug]: Finished rendering [  0.01s] test main_dbt_test__audit.assert_order_amount_consistency [success]
+19:32:29.216781 [info ]: Finished rendering [  0.01s] (2 nodes, 0 skipped, 0 errors)
+19:32:29.217823 [debug]: Started analyzing test main_dbt_test__audit.assert_order_amount_consistency
+19:32:29.226419 [debug]: Finished analyzing [  0.01s] test main_dbt_test__audit.assert_no_negative_unit_price [success]
+19:32:29.226810 [info ]: Started running (2 nodes)
+19:32:29.226955 [info ]: Started running test main_dbt_test__audit.assert_no_negative_unit_price
+19:32:29.228771 [debug]: Finished analyzing [  0.01s] test main_dbt_test__audit.assert_order_amount_consistency [success]
+19:32:29.229163 [info ]: Finished analyzing [  0.01s] (2 nodes, 0 skipped, 0 errors)
+19:32:29.229659 [info ]: Started running test main_dbt_test__audit.assert_order_amount_consistency
+19:32:29.231711 [debug]: Writing runtime sql for node "test.controllo_ordini.assert_no_negative_unit_price"
+19:32:29.232550 [debug]: Writing runtime sql for node "test.controllo_ordini.assert_order_amount_consistency"
+19:32:29.236042 [debug]: DuckDB driver resolved: duckdb 1.5.4
+19:32:29.261173 [debug]: create_debug_span(...).entered() took 55.2µs
+19:32:29.261173 [debug]: create_debug_span(...).entered() took 55.5µs
+19:32:29.263719 [debug]: stmt.execute() (submit+wait_for_completion, returns reader) took 1.1262ms
+19:32:29.263747 [debug]: reader.schema() took 2.9µs
+19:32:29.263792 [debug]: stmt.execute() (submit+wait_for_completion, returns reader) took 923.1µs
+19:32:29.263809 [debug]: reader.schema() took 200ns
+19:32:29.263880 [debug]: batch-consume loop (for res in reader) took 66.1µs
+19:32:29.263882 [debug]: batch-consume loop (for res in reader) took 129.5µs
+19:32:29.263925 [debug]: do_execute(conn) (closure: stmt.execute + schema + batch loop) took 2.7309ms
+19:32:29.263925 [debug]: do_execute(conn) (closure: stmt.execute + schema + batch loop) took 2.7306ms
+19:32:29.263967 [debug]: concat_batches + normalize_result_column_names took 33.7µs
+19:32:29.263968 [debug]: concat_batches + normalize_result_column_names took 33.8µs
+19:32:29.263990 [debug]: record_current_span_status_from_attrs took 18µs
+19:32:29.263990 [debug]: record_current_span_status_from_attrs took 18.3µs
+19:32:29.264000 [debug]: Query executed on node test.controllo_ordini.assert_no_negative_unit_price:
+/* {"app": "dbt", "dbt_version": "2.0.0", "node_id": "test.controllo_ordini.assert_no_negative_unit_price", "profile_name": "controllo_ordini", "target_name": "dev"} */
+
+    
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  -- Restituisce gli ordini con prezzo unitario negativo.
+-- Se la query restituisce righe, il test fallisce.
+select
+    order_id,
+    customer_id,
+    quantity,
+    unit_price,
+    amount
+from "ecommerce"."main"."raw_orders"
+where unit_price < 0
+  
+  
+      
+    ) dbt_internal_test
+19:32:29.264001 [debug]: Query executed on node test.controllo_ordini.assert_order_amount_consistency:
+/* {"app": "dbt", "dbt_version": "2.0.0", "node_id": "test.controllo_ordini.assert_order_amount_consistency", "profile_name": "controllo_ordini", "target_name": "dev"} */
+
+    
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  -- Restituisce gli ordini in cui l'importo non corrisponde a quantità x prezzo unitario.
+-- Se la query restituisce righe, il test fallisce.
+select
+    order_id,
+    customer_id,
+    quantity,
+    unit_price,
+    amount,
+    quantity * unit_price as amount_atteso
+from "ecommerce"."main"."raw_orders"
+where abs(amount - quantity * unit_price) > 0.01
+  
+  
+      
+    ) dbt_internal_test
+19:32:29.264028 [debug]: drop(query_span_guard) (span exit/export) took 34.8µs
+19:32:29.264029 [debug]: drop(query_span_guard) (span exit/export) took 34.7µs
+19:32:29.264982 [info ]: Finished running [  0.04s] test main_dbt_test__audit.assert_order_amount_consistency [fail]
+19:32:29.265313 [info ]:     Failed test  assert_order_amount_consistency (tests/assert_order_amount_consistency.sql) [1 of 2 in 0.05s]
+19:32:29.265313 [info ]: Test failed (1 failed row(s)): assert_order_amount_consistency
+19:32:29.265912 [info ]: Finished running [  0.04s] test main_dbt_test__audit.assert_no_negative_unit_price [fail]
+19:32:29.266177 [info ]: Finished running [  0.04s] (2 nodes, 0 skipped, 2 errors)
+19:32:29.266461 [info ]:     Failed test  assert_no_negative_unit_price (tests/assert_no_negative_unit_price.sql) [2 of 2 in 0.05s]
+19:32:29.266461 [info ]: Test failed (1 failed row(s)): assert_no_negative_unit_price
+19:32:29.524027 [info ]: 
+==================== Execution Summary =====================
+Finished 'test' with 2 errors for target 'dev' [584ms]
+Processed: 2 tests
+Summary: 2 total | 2 error

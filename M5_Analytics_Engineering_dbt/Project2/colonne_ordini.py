@@ -16,4 +16,3 @@ con.sql("""
 """).show(max_width=200, max_rows=30)
 
 con.close()
-

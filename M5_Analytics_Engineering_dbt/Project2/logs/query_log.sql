@@ -1,6 +1,6 @@
--- created_at: 2026-11-03T14:40:22.568393400+00:00
--- finished_at: 2026-11-03T14:40:22.573703100+00:00
--- elapsed: 5ms
+-- created_at: 2026-11-03T19:32:29.261137800+00:00
+-- finished_at: 2026-11-03T19:32:29.264001200+00:00
+-- elapsed: 2ms
 -- outcome: success
 -- dialect: duckdb
 -- node_id: test.controllo_ordini.assert_order_amount_consistency
@@ -32,15 +32,15 @@ where abs(amount - quantity * unit_price) > 0.01
       
     ) dbt_internal_test;
 
--- created_at: 2026-11-03T14:40:22.568543+00:00
--- finished_at: 2026-11-03T14:40:22.573699400+00:00
--- elapsed: 5ms
+-- created_at: 2026-11-03T19:32:29.261137800+00:00
+-- finished_at: 2026-11-03T19:32:29.264000500+00:00
+-- elapsed: 2ms
 -- outcome: success
 -- dialect: duckdb
--- node_id: test.controllo_ordini.assert_order_no_negative_unite_price
+-- node_id: test.controllo_ordini.assert_no_negative_unit_price
 -- query_id: not available
 -- desc: execute adapter call
-/* {"app": "dbt", "dbt_version": "2.0.0", "node_id": "test.controllo_ordini.assert_order_no_negative_unite_price", "profile_name": "controllo_ordini", "target_name": "dev"} */
+/* {"app": "dbt", "dbt_version": "2.0.0", "node_id": "test.controllo_ordini.assert_no_negative_unit_price", "profile_name": "controllo_ordini", "target_name": "dev"} */
 
     
     select
