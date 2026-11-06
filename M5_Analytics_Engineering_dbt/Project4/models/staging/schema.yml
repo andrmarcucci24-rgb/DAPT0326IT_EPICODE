@@ -1,0 +1,94 @@
+# file YAML che documenta i modelli di models/staging
+version: 2
+
+models:
+  - name: stg_orders
+    # Punto 4: descrizione del modello (scopo e contenuto)
+    description: >
+      Ordini dei clienti: ogni riga è un ordine, con data, stato, quantità,
+      prezzo unitario e importo. Letti da raw_orders; gli identificativi sono
+      convertiti da decimali a interi. I dati non sono ancora puliti: restano
+      le anomalie trovate nell'esercizio 2 (per esempio un order_id mancante
+      e uno ripetuto).
+    # Punto 5: descrizioni delle colonne importanti
+    columns:
+      - name: order_id
+        description: >
+          Identificativo dell'ordine. Dovrebbe essere unico, ma nei dati c'è
+          una riga senza order_id e l'ordine 2010 compare due volte.
+      - name: customer_id
+        description: >
+          Cliente che ha fatto l'ordine (collegamento a stg_customers). È vuoto
+          per l'ordine 2017, mentre l'ordine 2006 punta al cliente 199, che
+          non esiste.
+      - name: status
+        description: >
+          Stato dell'ordine: placed, shipped, completed o returned. L'ordine
+          2007 ha lo stato pending_review, non previsto.
+      - name: unit_price
+        description: >
+          Prezzo di una unità. È negativo per l'ordine 2008 e zero per il 2015.
+      - name: amount
+        description: >
+          Importo totale dell'ordine, che dovrebbe essere quantity per
+          unit_price. Per l'ordine 2016 non coincide (50 invece di 44).
+
+  - name: stg_customers
+    description: >
+      Anagrafica dei clienti: una riga per cliente, con nome, città, segmento
+      e data di iscrizione. Letta da raw_customers senza modifiche.
+    columns:
+      - name: customer_id
+        description: Identificativo unico del cliente.
+        data_tests:
+          - unique
+          - not_null
+      - name: customer_segment
+        description: Segmento del cliente, consumer o business.
+      
+  - name: stg_products
+    description: >
+      Catalogo dei prodotti: una riga per prodotto, con nome, categoria,
+      prezzo di listino e indicatore di prodotto attivo. Letto da
+      raw_products senza modifiche.
+    columns:
+      - name: product_id
+        description: Identificativo unico del prodotto.
+        data_tests:
+          - unique
+          - not_null
+      - name: list_price
+        description: >
+          Prezzo di listino. Il prodotto 506 (Cuffie) ha un prezzo negativo,
+          da verificare.
+      - name: is_active
+        description: >
+          Indica se il prodotto è ancora in vendita. Il prodotto 508 non è
+          più attivo.
+
+  - name: stg_order_items
+    description: >
+      Righe d'ordine: una riga per ogni prodotto presente in un ordine, con
+      quantità e importo della riga. Collega gli ordini ai prodotti. Letta
+      da raw_order_items senza modifiche.
+    columns:
+      - name: order_item_id
+        description: Identificativo unico della riga d'ordine.
+        data_tests:
+          - unique
+          - not_null
+      - name: order_id
+        description: >
+          Ordine a cui appartiene la riga. La riga 19 punta all'ordine 2999,
+          che non esiste in stg_orders.
+      - name: product_id
+        description: Prodotto venduto nella riga (collegamento a stg_products).
+        data_tests:
+          - relationships:
+              arguments:
+                to: ref('stg_products')
+                field: product_id
+      - name: line_amount
+        description: >
+          Importo della riga, uguale a quantity per il prezzo di listino.
+          La riga 9 (prodotto 506) è negativa, -15.0.

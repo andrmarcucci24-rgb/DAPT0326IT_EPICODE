@@ -1,0 +1,10 @@
+# Nome del profilo: deve coincidere con "profile" in dbt_project.yml
+ecommerce_docs:
+  # Connessione da usare di default
+  target: dev
+  outputs:
+    dev:
+      # Tipo di database
+      type: duckdb
+      # Database da usare: il file è nella stessa cartella del progetto
+      path: ./ecommerce.duckdb

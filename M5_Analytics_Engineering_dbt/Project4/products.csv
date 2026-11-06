@@ -1,0 +1,9 @@
+product_id,product_name,category,list_price,is_active
+501,Tastiera meccanica,accessori,45.0,True
+502,Mouse wireless,accessori,25.0,True
+503,Monitor 27 pollici,monitor,220.0,True
+504,Dock USB-C,accessori,89.0,True
+505,Webcam HD,video,55.0,True
+506,Cuffie,audio,-15.0,True
+507,Microfono USB,audio,75.0,True
+508,Vecchio modello,misc,30.0,False

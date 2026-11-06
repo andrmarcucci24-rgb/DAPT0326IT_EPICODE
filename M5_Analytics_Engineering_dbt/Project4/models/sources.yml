@@ -1,0 +1,13 @@
+sources:
+  - name: ecommerce
+    description: Dati grezzi dell'e-commerce, caricati dai CSV senza modifiche.
+    schema: main
+    tables:
+      - name: raw_orders
+        description: Ordini, come nel file orders.csv.
+      - name: raw_customers
+        description: Clienti, come nel file customers.csv.
+      - name: raw_products
+        description: Prodotti, come nel file products.csv.
+      - name: raw_order_items
+        description: Righe d'ordine, come nel file order_items.csv

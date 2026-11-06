@@ -1,0 +1,12 @@
+# Nome del progetto
+name: 'ecommerce_docs'
+
+# Versione del progetto
+version: '1.0.0'
+
+# Nome del profilo di connessione da usare.
+# Deve coincidere con il nome del profilo in profiles.yml
+profile: 'ecommerce_docs'
+
+# Cartella in cui dbt cerca i modelli
+model-paths: ["models"]

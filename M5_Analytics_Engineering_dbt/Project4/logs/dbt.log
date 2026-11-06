@@ -1,0 +1,1277 @@
+==================== 2026-11-06T15:11:54.874416Z | 01a1b16a-95d3-7d23-83ef-0e655bf4cbc2 ====================
+15:11:54.881116 [info ]: dbt 2.0.9
+15:11:54.887245 [info ]: Started loading project
+15:11:54.931446 [info ]: Loading profiles.yml
+15:11:54.961882 [info ]: Finished loading project [  0.07s]
+15:11:54.966608 [info ]: Started debugging
+15:11:54.967508 [info ]: Debugging profile: dev
+15:11:54.967746 [info ]: Debugging dbt version: 2.0.9
+15:11:54.968039 [info ]: Debugging platform: windows x86_64 (windows)
+15:11:54.969885 [info ]: Debugging adapter type: duckdb (remote)
+15:11:55.025575 [info ]: Debugging dependencies:
+  git: OK
+15:11:55.031404 [info ]: Debugging connection:
+  "path": "./ecommerce.duckdb"
+15:11:55.047444 [debug]: DuckDB driver resolved: duckdb 1.5.4
+15:11:55.353810 [debug]: borrow_tlocal_connection() took 313.8839ms
+15:11:55.362539 [debug]: create_debug_span(...).entered() took 467.4µs
+15:11:55.370647 [debug]: stmt.execute() (submit+wait_for_completion, returns reader) took 2.3751ms
+15:11:55.370968 [debug]: reader.schema() took 294.8µs
+15:11:55.371344 [debug]: do_execute(conn) (closure: stmt.execute + schema + batch loop) took 8.7817ms
+15:11:55.373388 [debug]: concat_batches + normalize_result_column_names took 2.0291ms
+15:11:55.373821 [debug]: record_current_span_status_from_attrs took 418.1µs
+15:11:55.374047 [debug]: Query executed on node unknown:
+select 1 as id
+15:11:55.374082 [debug]: drop(query_span_guard) (span exit/export) took 249.6µs
+15:11:55.378241 [debug]: adapter.execute() (full call, incl. adbc_execute_with_options) took 24.3929ms
+15:11:55.378848 [info ]: Debugging connection test: OK
+15:11:55.384624 [info ]: Debugged All checks passed!
+15:11:55.385320 [info ]: Finished debugging [  0.42s]
+15:11:55.968961 [info ]: New version available 2.0.11 (run `dbt system update`)
+15:11:56.010918 [info ]: 
+==================== Execution Summary =====================
+Finished 'debug' successfully for target 'dev' [1.1s]
+==================== 2026-11-06T15:12:02.665781Z | 01a1b16a-b461-7063-99af-87f8937d3d67 ====================
+15:12:02.666439 [info ]: dbt 2.0.9
+15:12:02.667734 [info ]: Started loading project
+15:12:02.673311 [info ]: Loading profiles.yml
+15:12:02.706586 [debug]:    Started loading packages
+15:12:02.717365 [debug]:     Loaded [  0.01s] packages
+15:12:02.727121 [info ]: Finished loading project [  0.06s]
+15:12:02.737086 [info ]: Started parsing (5 nodes)
+15:12:02.814626 [debug]:    Started building model nodes
+15:12:02.814644 [debug]:    Started building model nodes
+15:12:02.815428 [debug]:   Finished [  0.00s] building model nodes
+15:12:02.815443 [debug]:   Finished [  0.00s] building model nodes
+15:12:02.819318 [debug]:    Started resolving data tests
+15:12:02.819338 [debug]:    Started resolving data tests
+15:12:02.819977 [debug]:   Finished [  0.00s] resolving data tests
+15:12:02.819977 [debug]:   Finished [  0.00s] resolving data tests
+15:12:02.823863 [debug]: Finished parsing models/sources.yml [  0.02s]
+15:12:02.857598 [debug]: Finished parsing models/staging/stg_customers.sql [  0.02s]
+15:12:02.858603 [debug]: Finished parsing models/staging/stg_order_items.sql [  0.00s]
+15:12:02.867725 [debug]: Finished parsing models/staging/stg_orders.sql [  0.01s]
+15:12:02.878339 [debug]: Finished parsing models/staging/stg_products.sql [  0.01s]
+15:12:02.878903 [debug]:    Started building model nodes
+15:12:02.885037 [debug]:   Finished [  0.01s] building model nodes
+15:12:02.885748 [debug]:    Started resolving data tests
+15:12:02.885826 [debug]:   Finished [  0.00s] resolving data tests
+15:12:02.887598 [debug]:    Started typechecking macros
+15:12:03.108951 [debug]:   Finished [  0.22s] typechecking macros
+15:12:03.118204 [info ]: Finished parsing [  0.38s] (5 nodes, 0 skipped, 0 errors)
+15:12:03.204449 [info ]: Started scheduling
+15:12:03.208846 [info ]: Finished scheduling [  0.00s]
+15:12:03.217559 [debug]: Initializing schema store with entry: Frontier(CanonicalFqn { catalog: "ecommerce", schema: "main", table: "raw_customers" }) and interval: None
+15:12:03.217765 [debug]: Initializing schema store with entry: Frontier(CanonicalFqn { catalog: "ecommerce", schema: "main", table: "raw_orders" }) and interval: None
+15:12:03.217772 [debug]: Initializing schema store with entry: Frontier(CanonicalFqn { catalog: "ecommerce", schema: "main", table: "raw_products" }) and interval: None
+15:12:03.217775 [debug]: Initializing schema store with entry: Frontier(CanonicalFqn { catalog: "ecommerce", schema: "main", table: "raw_order_items" }) and interval: None
+15:12:03.235304 [info ]: Started building task graph
+15:12:03.242583 [info ]: Finished building task graph [  0.01s]
+15:12:03.295931 [debug]: DuckDB driver resolved: duckdb 1.5.4
+15:12:03.327268 [debug]: create_debug_span(...).entered() took 64µs
+15:12:03.333281 [debug]: stmt.execute() (submit+wait_for_completion, returns reader) took 1.6137ms
+15:12:03.333311 [debug]: reader.schema() took 2.6µs
+15:12:03.333355 [debug]: batch-consume loop (for res in reader) took 40.2µs
+15:12:03.333388 [debug]: do_execute(conn) (closure: stmt.execute + schema + batch loop) took 6.0831ms
+15:12:03.333432 [debug]: concat_batches + normalize_result_column_names took 37µs
+15:12:03.333454 [debug]: record_current_span_status_from_attrs took 14.2µs
+15:12:03.333468 [debug]: Query executed on node unknown:
+/* {"app": "dbt", "connection_name": "", "dbt_version": "2.0.0", "profile_name": "ecommerce_docs", "target_name": "dev"} */
+
+    
+    select schema_name
+    from system.information_schema.schemata
+    
+    where lower(catalog_name) = '"ecommerce"'
+    
+  
+  
+15:12:03.333490 [debug]: drop(query_span_guard) (span exit/export) took 28.5µs
+15:12:03.336657 [debug]: create_debug_span(...).entered() took 14.2µs
+15:12:03.338294 [debug]: stmt.execute() (submit+wait_for_completion, returns reader) took 901.7µs
+15:12:03.338311 [debug]: reader.schema() took 300ns
+15:12:03.338329 [debug]: batch-consume loop (for res in reader) took 14.1µs
+15:12:03.338344 [debug]: do_execute(conn) (closure: stmt.execute + schema + batch loop) took 1.6673ms
+15:12:03.338358 [debug]: concat_batches + normalize_result_column_names took 7.7µs
+15:12:03.338364 [debug]: record_current_span_status_from_attrs took 2.6µs
+15:12:03.338370 [debug]: Query executed on node unknown:
+/* {"app": "dbt", "connection_name": "", "dbt_version": "2.0.0", "profile_name": "ecommerce_docs", "target_name": "dev"} */
+
+    
+        select type from duckdb_databases()
+        where lower(database_name)='ecommerce'
+        and type='sqlite'
+    
+  
+15:12:03.338390 [debug]: drop(query_span_guard) (span exit/export) took 22.7µs
+15:12:03.339380 [debug]: create_debug_span(...).entered() took 12.9µs
+15:12:03.339946 [debug]: stmt.execute() (submit+wait_for_completion, returns reader) took 117.5µs
+15:12:03.339959 [debug]: reader.schema() took 300ns
+15:12:03.339972 [debug]: do_execute(conn) (closure: stmt.execute + schema + batch loop) took 575.7µs
+15:12:03.339980 [debug]: concat_batches + normalize_result_column_names took 4.8µs
+15:12:03.339985 [debug]: record_current_span_status_from_attrs took 1.6µs
+15:12:03.339991 [debug]: Query executed on node unknown:
+/* {"app": "dbt", "connection_name": "", "dbt_version": "2.0.0", "profile_name": "ecommerce_docs", "target_name": "dev"} */
+
+    
+    
+        create schema if not exists "ecommerce"."main"
+    
+15:12:03.340008 [debug]: drop(query_span_guard) (span exit/export) took 18.7µs
+15:12:03.342280 [info ]: Started rendering (4 nodes)
+15:12:03.342724 [info ]: Started model main.stg_products
+15:12:03.342998 [debug]: Started rendering model main.stg_products
+15:12:03.343664 [info ]: Started model main.stg_orders
+15:12:03.343679 [debug]: Started rendering model main.stg_orders
+15:12:03.343697 [info ]: Started model main.stg_order_items
+15:12:03.343703 [debug]: Started rendering model main.stg_order_items
+15:12:03.343921 [info ]: Started model main.stg_customers
+15:12:03.343936 [debug]: Started rendering model main.stg_customers
+15:12:03.360960 [debug]: Compiled SQL for node model.ecommerce_docs.stg_order_items at target\compiled\ecommerce_docs\models\staging\stg_order_items.sql
+15:12:03.360960 [debug]: Compiled SQL for node model.ecommerce_docs.stg_orders at target\compiled\ecommerce_docs\models\staging\stg_orders.sql
+15:12:03.360960 [debug]: Compiled SQL for node model.ecommerce_docs.stg_products at target\compiled\ecommerce_docs\models\staging\stg_products.sql
+15:12:03.360960 [debug]: Compiled SQL for node model.ecommerce_docs.stg_customers at target\compiled\ecommerce_docs\models\staging\stg_customers.sql
+15:12:03.363249 [debug]: Finished rendering [  0.02s] model main.stg_products [success]
+15:12:03.364274 [info ]: Started analyzing (4 nodes)
+15:12:03.364399 [debug]: Started analyzing model main.stg_products
+15:12:03.365008 [debug]: Finished rendering [  0.02s] model main.stg_orders [success]
+15:12:03.365275 [debug]: Started analyzing model main.stg_orders
+15:12:03.365311 [debug]: Finished rendering [  0.02s] model main.stg_customers [success]
+15:12:03.365607 [debug]: Started analyzing model main.stg_customers
+15:12:03.365655 [debug]: Finished rendering [  0.02s] model main.stg_order_items [success]
+15:12:03.365963 [info ]: Finished rendering [  0.02s] (4 nodes, 0 skipped, 0 errors)
+15:12:03.366325 [debug]: Started analyzing model main.stg_order_items
+15:12:03.395762 [debug]: Finished analyzing [  0.03s] model main.stg_orders [success]
+15:12:03.396119 [info ]: Started running (4 nodes)
+15:12:03.396269 [info ]: Started running model main.stg_orders
+15:12:03.396303 [debug]: Finished analyzing [  0.03s] model main.stg_order_items [success]
+15:12:03.396551 [info ]: Started running model main.stg_order_items
+15:12:03.396593 [debug]: Finished analyzing [  0.03s] model main.stg_customers [success]
+15:12:03.396885 [info ]: Started running model main.stg_customers
+15:12:03.396929 [debug]: Finished analyzing [  0.03s] model main.stg_products [success]
+15:12:03.397177 [info ]: Finished analyzing [  0.03s] (4 nodes, 0 skipped, 0 errors)
+15:12:03.397469 [info ]: Started running model main.stg_products
+15:12:03.425817 [debug]: create_debug_span(...).entered() took 37.1µs
+15:12:03.425830 [debug]: create_debug_span(...).entered() took 54.5µs
+15:12:03.425852 [debug]: create_debug_span(...).entered() took 79.4µs
+15:12:03.425817 [debug]: create_debug_span(...).entered() took 30.3µs
+15:12:03.436646 [debug]: stmt.execute() (submit+wait_for_completion, returns reader) took 8.2301ms
+15:12:03.436646 [debug]: stmt.execute() (submit+wait_for_completion, returns reader) took 8.1912ms
+15:12:03.436646 [debug]: stmt.execute() (submit+wait_for_completion, returns reader) took 8.2301ms
+15:12:03.436646 [debug]: stmt.execute() (submit+wait_for_completion, returns reader) took 8.1993ms
+15:12:03.436703 [debug]: reader.schema() took 500ns
+15:12:03.436703 [debug]: reader.schema() took 400ns
+15:12:03.436704 [debug]: reader.schema() took 600ns
+15:12:03.436704 [debug]: reader.schema() took 500ns
+15:12:03.437485 [debug]: batch-consume loop (for res in reader) took 772.8µs
+15:12:03.437487 [debug]: batch-consume loop (for res in reader) took 775.1µs
+15:12:03.437490 [debug]: batch-consume loop (for res in reader) took 776µs
+15:12:03.437489 [debug]: batch-consume loop (for res in reader) took 775.5µs
+15:12:03.437538 [debug]: do_execute(conn) (closure: stmt.execute + schema + batch loop) took 11.6744ms
+15:12:03.437538 [debug]: do_execute(conn) (closure: stmt.execute + schema + batch loop) took 11.6904ms
+15:12:03.437539 [debug]: do_execute(conn) (closure: stmt.execute + schema + batch loop) took 11.6905ms
+15:12:03.437540 [debug]: do_execute(conn) (closure: stmt.execute + schema + batch loop) took 11.6609ms
+15:12:03.438055 [debug]: concat_batches + normalize_result_column_names took 508.8µs
+15:12:03.438057 [debug]: concat_batches + normalize_result_column_names took 510.8µs
+15:12:03.438056 [debug]: concat_batches + normalize_result_column_names took 505.7µs
+15:12:03.438058 [debug]: concat_batches + normalize_result_column_names took 511.3µs
+15:12:03.438068 [debug]: record_current_span_status_from_attrs took 2.2µs
+15:12:03.438068 [debug]: record_current_span_status_from_attrs took 2.4µs
+15:12:03.438068 [debug]: record_current_span_status_from_attrs took 3µs
+15:12:03.438068 [debug]: record_current_span_status_from_attrs took 2.1µs
+15:12:03.438075 [debug]: Query executed on node model.ecommerce_docs.stg_order_items:
+SELECT table_catalog, table_schema, table_name, table_type FROM information_schema.tables WHERE table_schema = 'main' AND lower(table_catalog) = lower('ecommerce')
+15:12:03.438075 [debug]: Query executed on node model.ecommerce_docs.stg_customers:
+SELECT table_catalog, table_schema, table_name, table_type FROM information_schema.tables WHERE table_schema = 'main' AND lower(table_catalog) = lower('ecommerce')
+15:12:03.438075 [debug]: Query executed on node model.ecommerce_docs.stg_orders:
+SELECT table_catalog, table_schema, table_name, table_type FROM information_schema.tables WHERE table_schema = 'main' AND lower(table_catalog) = lower('ecommerce')
+15:12:03.438077 [debug]: Query executed on node model.ecommerce_docs.stg_products:
+SELECT table_catalog, table_schema, table_name, table_type FROM information_schema.tables WHERE table_schema = 'main' AND lower(table_catalog) = lower('ecommerce')
+15:12:03.438098 [debug]: drop(query_span_guard) (span exit/export) took 27.1µs
+15:12:03.438099 [debug]: drop(query_span_guard) (span exit/export) took 24.4µs
+15:12:03.438111 [debug]: drop(query_span_guard) (span exit/export) took 38.1µs
+15:12:03.438126 [debug]: drop(query_span_guard) (span exit/export) took 51.3µs
+15:12:03.443452 [debug]: Writing runtime sql for node "model.ecommerce_docs.stg_orders"
+15:12:03.443452 [debug]: Writing runtime sql for node "model.ecommerce_docs.stg_products"
+15:12:03.443452 [debug]: Writing runtime sql for node "model.ecommerce_docs.stg_order_items"
+15:12:03.443452 [debug]: Writing runtime sql for node "model.ecommerce_docs.stg_customers"
+15:12:03.451300 [debug]: create_debug_span(...).entered() took 28.9µs
+15:12:03.453255 [debug]: create_debug_span(...).entered() took 22.3µs
+15:12:03.453266 [debug]: create_debug_span(...).entered() took 36.4µs
+15:12:03.453304 [debug]: create_debug_span(...).entered() took 16.6µs
+15:12:03.456508 [debug]: stmt.execute() (submit+wait_for_completion, returns reader) took 3.187ms
+15:12:03.456532 [debug]: reader.schema() took 500ns
+15:12:03.456559 [debug]: do_execute(conn) (closure: stmt.execute + schema + batch loop) took 5.2228ms
+15:12:03.456570 [debug]: concat_batches + normalize_result_column_names took 6µs
+15:12:03.456578 [debug]: record_current_span_status_from_attrs took 3.9µs
+15:12:03.456585 [debug]: Query executed on node model.ecommerce_docs.stg_orders:
+/* {"app": "dbt", "dbt_version": "2.0.0", "node_id": "model.ecommerce_docs.stg_orders", "profile_name": "ecommerce_docs", "target_name": "dev"} */
+
+  
+  create view "ecommerce"."main"."stg_orders__dbt_tmp" as (
+    select
+    cast(order_id as bigint) as order_id,
+    cast(customer_id as bigint) as customer_id,
+    order_date,
+    status,
+    quantity,
+    unit_price,
+    amount
+from "ecommerce"."main"."raw_orders"
+  );
+
+15:12:03.456617 [debug]: drop(query_span_guard) (span exit/export) took 33.9µs
+15:12:03.457864 [debug]: stmt.execute() (submit+wait_for_completion, returns reader) took 4.2434ms
+15:12:03.457885 [debug]: reader.schema() took 400ns
+15:12:03.457911 [debug]: do_execute(conn) (closure: stmt.execute + schema + batch loop) took 4.629ms
+15:12:03.457920 [debug]: concat_batches + normalize_result_column_names took 5.3µs
+15:12:03.457930 [debug]: record_current_span_status_from_attrs took 2.8µs
+15:12:03.457937 [debug]: Query executed on node model.ecommerce_docs.stg_order_items:
+/* {"app": "dbt", "dbt_version": "2.0.0", "node_id": "model.ecommerce_docs.stg_order_items", "profile_name": "ecommerce_docs", "target_name": "dev"} */
+
+  
+  create view "ecommerce"."main"."stg_order_items__dbt_tmp" as (
+    select
+    order_item_id,
+    order_id,
+    product_id,
+    quantity,
+    line_amount
+from "ecommerce"."main"."raw_order_items"
+  );
+
+15:12:03.457985 [debug]: drop(query_span_guard) (span exit/export) took 50.5µs
+15:12:03.459164 [debug]: stmt.execute() (submit+wait_for_completion, returns reader) took 5.4761ms
+15:12:03.459254 [debug]: reader.schema() took 700ns
+15:12:03.459312 [debug]: do_execute(conn) (closure: stmt.execute + schema + batch loop) took 5.9896ms
+15:12:03.459328 [debug]: concat_batches + normalize_result_column_names took 8.8µs
+15:12:03.459339 [debug]: record_current_span_status_from_attrs took 3.7µs
+15:12:03.459351 [debug]: Query executed on node model.ecommerce_docs.stg_products:
+/* {"app": "dbt", "dbt_version": "2.0.0", "node_id": "model.ecommerce_docs.stg_products", "profile_name": "ecommerce_docs", "target_name": "dev"} */
+
+  
+  create view "ecommerce"."main"."stg_products__dbt_tmp" as (
+    select
+    product_id,
+    product_name,
+    category,
+    list_price,
+    is_active
+from "ecommerce"."main"."raw_products"
+  );
+
+15:12:03.459465 [debug]: drop(query_span_guard) (span exit/export) took 116.3µs
+15:12:03.471420 [debug]: stmt.execute() (submit+wait_for_completion, returns reader) took 17.7108ms
+15:12:03.471464 [debug]: reader.schema() took 500ns
+15:12:03.471505 [debug]: do_execute(conn) (closure: stmt.execute + schema + batch loop) took 18.2214ms
+15:12:03.471522 [debug]: concat_batches + normalize_result_column_names took 8.5µs
+15:12:03.471534 [debug]: record_current_span_status_from_attrs took 3.3µs
+15:12:03.471548 [debug]: Query executed on node model.ecommerce_docs.stg_customers:
+/* {"app": "dbt", "dbt_version": "2.0.0", "node_id": "model.ecommerce_docs.stg_customers", "profile_name": "ecommerce_docs", "target_name": "dev"} */
+
+  
+  create view "ecommerce"."main"."stg_customers__dbt_tmp" as (
+    select
+    customer_id,
+    customer_name,
+    city,
+    customer_segment,
+    signup_date
+from "ecommerce"."main"."raw_customers"
+  );
+
+15:12:03.471600 [debug]: drop(query_span_guard) (span exit/export) took 57.3µs
+15:12:03.472585 [debug]: create_debug_span(...).entered() took 14.8µs
+15:12:03.472585 [debug]: create_debug_span(...).entered() took 20.2µs
+15:12:03.472948 [debug]: create_debug_span(...).entered() took 19µs
+15:12:03.474184 [debug]: create_debug_span(...).entered() took 21.7µs
+15:12:03.475630 [debug]: stmt.execute() (submit+wait_for_completion, returns reader) took 2.0837ms
+15:12:03.475655 [debug]: reader.schema() took 600ns
+15:12:03.475686 [debug]: do_execute(conn) (closure: stmt.execute + schema + batch loop) took 3.043ms
+15:12:03.475731 [debug]: concat_batches + normalize_result_column_names took 29.5µs
+15:12:03.475744 [debug]: record_current_span_status_from_attrs took 4.6µs
+15:12:03.475760 [debug]: Query executed on node model.ecommerce_docs.stg_products:
+/* {"app": "dbt", "dbt_version": "2.0.0", "node_id": "model.ecommerce_docs.stg_products", "profile_name": "ecommerce_docs", "target_name": "dev"} */
+alter view "ecommerce"."main"."stg_products__dbt_tmp" rename to "stg_products"
+15:12:03.475825 [debug]: drop(query_span_guard) (span exit/export) took 68.8µs
+15:12:03.477333 [debug]: stmt.execute() (submit+wait_for_completion, returns reader) took 3.8019ms
+15:12:03.477375 [debug]: reader.schema() took 600ns
+15:12:03.477412 [debug]: do_execute(conn) (closure: stmt.execute + schema + batch loop) took 4.4302ms
+15:12:03.477430 [debug]: concat_batches + normalize_result_column_names took 8.6µs
+15:12:03.477443 [debug]: record_current_span_status_from_attrs took 5.3µs
+15:12:03.477460 [debug]: Query executed on node model.ecommerce_docs.stg_order_items:
+/* {"app": "dbt", "dbt_version": "2.0.0", "node_id": "model.ecommerce_docs.stg_order_items", "profile_name": "ecommerce_docs", "target_name": "dev"} */
+alter view "ecommerce"."main"."stg_order_items__dbt_tmp" rename to "stg_order_items"
+15:12:03.477516 [debug]: drop(query_span_guard) (span exit/export) took 60.2µs
+15:12:03.479376 [debug]: stmt.execute() (submit+wait_for_completion, returns reader) took 5.8278ms
+15:12:03.479423 [debug]: reader.schema() took 600ns
+15:12:03.479463 [debug]: do_execute(conn) (closure: stmt.execute + schema + batch loop) took 6.8382ms
+15:12:03.479482 [debug]: concat_batches + normalize_result_column_names took 8.2µs
+15:12:03.479509 [debug]: record_current_span_status_from_attrs took 4.1µs
+15:12:03.479523 [debug]: Query executed on node model.ecommerce_docs.stg_orders:
+/* {"app": "dbt", "dbt_version": "2.0.0", "node_id": "model.ecommerce_docs.stg_orders", "profile_name": "ecommerce_docs", "target_name": "dev"} */
+alter view "ecommerce"."main"."stg_orders__dbt_tmp" rename to "stg_orders"
+15:12:03.479577 [debug]: drop(query_span_guard) (span exit/export) took 58.8µs
+15:12:03.481185 [debug]: stmt.execute() (submit+wait_for_completion, returns reader) took 3.8888ms
+15:12:03.481228 [debug]: reader.schema() took 600ns
+15:12:03.481262 [debug]: do_execute(conn) (closure: stmt.execute + schema + batch loop) took 7.0499ms
+15:12:03.481281 [debug]: concat_batches + normalize_result_column_names took 7.4µs
+15:12:03.481302 [debug]: record_current_span_status_from_attrs took 3.4µs
+15:12:03.481316 [debug]: Query executed on node model.ecommerce_docs.stg_customers:
+/* {"app": "dbt", "dbt_version": "2.0.0", "node_id": "model.ecommerce_docs.stg_customers", "profile_name": "ecommerce_docs", "target_name": "dev"} */
+alter view "ecommerce"."main"."stg_customers__dbt_tmp" rename to "stg_customers"
+15:12:03.481358 [debug]: drop(query_span_guard) (span exit/export) took 46.6µs
+15:12:03.481670 [debug]: create_debug_span(...).entered() took 18.3µs
+15:12:03.481674 [debug]: create_debug_span(...).entered() took 18.3µs
+15:12:03.482146 [debug]: stmt.execute() (submit+wait_for_completion, returns reader) took 164.5µs
+15:12:03.482170 [debug]: reader.schema() took 500ns
+15:12:03.482186 [debug]: do_execute(conn) (closure: stmt.execute + schema + batch loop) took 485.3µs
+15:12:03.482197 [debug]: concat_batches + normalize_result_column_names took 5.5µs
+15:12:03.482204 [debug]: record_current_span_status_from_attrs took 2.1µs
+15:12:03.482212 [debug]: Query executed on node model.ecommerce_docs.stg_products:
+/* {"app": "dbt", "dbt_version": "2.0.0", "node_id": "model.ecommerce_docs.stg_products", "profile_name": "ecommerce_docs", "target_name": "dev"} */
+
+      drop view if exists "ecommerce"."main"."stg_products__dbt_backup" cascade
+    
+15:12:03.482223 [debug]: stmt.execute() (submit+wait_for_completion, returns reader) took 246.7µs
+15:12:03.482238 [debug]: drop(query_span_guard) (span exit/export) took 29.6µs
+15:12:03.482241 [debug]: reader.schema() took 200ns
+15:12:03.482263 [debug]: do_execute(conn) (closure: stmt.execute + schema + batch loop) took 560.9µs
+15:12:03.482277 [debug]: concat_batches + normalize_result_column_names took 4.3µs
+15:12:03.482287 [debug]: record_current_span_status_from_attrs took 2µs
+15:12:03.482300 [debug]: Query executed on node model.ecommerce_docs.stg_order_items:
+/* {"app": "dbt", "dbt_version": "2.0.0", "node_id": "model.ecommerce_docs.stg_order_items", "profile_name": "ecommerce_docs", "target_name": "dev"} */
+
+      drop view if exists "ecommerce"."main"."stg_order_items__dbt_backup" cascade
+    
+15:12:03.482326 [debug]: drop(query_span_guard) (span exit/export) took 30.2µs
+15:12:03.483405 [debug]: create_debug_span(...).entered() took 19.6µs
+15:12:03.483878 [debug]: stmt.execute() (submit+wait_for_completion, returns reader) took 211.3µs
+15:12:03.483905 [debug]: reader.schema() took 700ns
+15:12:03.483923 [debug]: do_execute(conn) (closure: stmt.execute + schema + batch loop) took 489.1µs
+15:12:03.483935 [debug]: concat_batches + normalize_result_column_names took 6.9µs
+15:12:03.483943 [debug]: record_current_span_status_from_attrs took 2.1µs
+15:12:03.483952 [debug]: Query executed on node model.ecommerce_docs.stg_orders:
+/* {"app": "dbt", "dbt_version": "2.0.0", "node_id": "model.ecommerce_docs.stg_orders", "profile_name": "ecommerce_docs", "target_name": "dev"} */
+
+      drop view if exists "ecommerce"."main"."stg_orders__dbt_backup" cascade
+    
+15:12:03.483988 [debug]: drop(query_span_guard) (span exit/export) took 39.6µs
+15:12:03.484779 [debug]: create_debug_span(...).entered() took 19.1µs
+15:12:03.485283 [debug]: stmt.execute() (submit+wait_for_completion, returns reader) took 236.8µs
+15:12:03.485312 [debug]: reader.schema() took 500ns
+15:12:03.485332 [debug]: do_execute(conn) (closure: stmt.execute + schema + batch loop) took 521.8µs
+15:12:03.485345 [debug]: concat_batches + normalize_result_column_names took 6.5µs
+15:12:03.485352 [debug]: record_current_span_status_from_attrs took 2.3µs
+15:12:03.485362 [debug]: Query executed on node model.ecommerce_docs.stg_customers:
+/* {"app": "dbt", "dbt_version": "2.0.0", "node_id": "model.ecommerce_docs.stg_customers", "profile_name": "ecommerce_docs", "target_name": "dev"} */
+
+      drop view if exists "ecommerce"."main"."stg_customers__dbt_backup" cascade
+    
+15:12:03.485397 [debug]: drop(query_span_guard) (span exit/export) took 39.4µs
+15:12:03.486234 [info ]: Finished running [  0.09s] model main.stg_products [success]
+15:12:03.486730 [info ]:  Succeeded model main.stg_products (view) [1 of 4 in 0.14s]
+15:12:03.487738 [info ]: Finished running [  0.09s] model main.stg_order_items [success]
+15:12:03.488242 [info ]:  Succeeded model main.stg_order_items (view) [3 of 4 in 0.14s]
+15:12:03.488820 [info ]: Finished running [  0.09s] model main.stg_orders [success]
+15:12:03.489048 [info ]:  Succeeded model main.stg_orders (view) [2 of 4 in 0.14s]
+15:12:03.489619 [info ]: Finished running [  0.09s] model main.stg_customers [success]
+15:12:03.489869 [info ]: Finished running [  0.09s] (4 nodes, 0 skipped, 0 errors)
+15:12:03.490286 [info ]:  Succeeded model main.stg_customers (view) [4 of 4 in 0.14s]
+15:12:03.812024 [info ]: New version available 2.0.11 (run `dbt system update`)
+15:12:03.845740 [info ]: 
+==================== Execution Summary =====================
+Finished 'run' successfully for target 'dev' [1.2s]
+Processed: 4 models
+Summary: 4 total | 4 success
+==================== 2026-11-06T15:18:42.752767Z | 01a1b170-cf1f-7db0-b686-8a2dcb1836ab ====================
+15:18:42.758677 [info ]: dbt 2.0.9
+15:18:42.765516 [info ]: Started loading project
+15:18:42.807802 [info ]: Loading profiles.yml
+15:18:42.874419 [debug]:    Started loading packages
+15:18:42.887515 [debug]:     Loaded [  0.01s] packages
+15:18:42.900461 [info ]: Finished loading project [  0.13s]
+15:18:42.905606 [info ]: Started parsing (6 nodes)
+15:18:42.991451 [debug]: Finished parsing models/sources.yml [  0.01s]
+15:18:42.991331 [debug]:    Started building model nodes
+15:18:42.991328 [debug]:    Started building model nodes
+15:18:42.992386 [debug]:   Finished [  0.00s] building model nodes
+15:18:42.992385 [debug]:   Finished [  0.00s] building model nodes
+15:18:42.993952 [error]: [DuplicateConfigKey (dbt1059)]: Duplicate key `description`. This key overwrites a previous definition of the same key at line 7 column 5. YAML path: `models[0].description`.
+  --> models\staging\schema.yml:37:5
+15:18:42.995253 [error]: [DuplicateConfigKey (dbt1059)]: Duplicate key `columns`. This key overwrites a previous definition of the same key at line 14 column 5. YAML path: `models[0].columns`.
+  --> models\staging\schema.yml:40:5
+15:18:42.996685 [debug]: Finished parsing models/staging/schema.yml [  0.00s]
+15:18:42.997631 [debug]:    Started resolving data tests
+15:18:42.997631 [debug]:    Started resolving data tests
+15:18:42.998757 [debug]:   Finished [  0.00s] resolving data tests
+15:18:42.998757 [debug]:   Finished [  0.00s] resolving data tests
+15:18:43.031776 [debug]: Finished parsing models/staging/stg_customers.sql [  0.02s]
+15:18:43.033078 [debug]: Finished parsing models/staging/stg_order_items.sql [  0.00s]
+15:18:43.034209 [debug]: Finished parsing models/staging/stg_orders.sql [  0.00s]
+15:18:43.035570 [debug]: Finished parsing models/staging/stg_products.sql [  0.00s]
+15:18:43.035892 [debug]:    Started building model nodes
+15:18:43.060199 [debug]:   Finished [  0.02s] building model nodes
+15:18:43.061315 [debug]:    Started resolving data tests
+15:18:43.077287 [debug]: Finished parsing target\generic_tests\unique_stg_order_items_order_item_id.sql [  0.01s]
+15:18:43.088646 [debug]: Finished parsing target\generic_tests\not_null_stg_order_items_order_item_id.sql [  0.01s]
+15:18:43.098715 [debug]: Finished parsing target\generic_tests\relationships_stg_order_items_85fcc371bcae46211ede4a7fca07283f.sql [  0.01s]
+15:18:43.107364 [debug]: Finished parsing target\generic_tests\unique_stg_orders_customer_id.sql [  0.01s]
+15:18:43.122845 [debug]: Finished parsing target\generic_tests\not_null_stg_orders_customer_id.sql [  0.02s]
+15:18:43.136868 [debug]: Finished parsing target\generic_tests\unique_stg_products_product_id.sql [  0.01s]
+15:18:43.152569 [debug]: Finished parsing target\generic_tests\not_null_stg_products_product_id.sql [  0.02s]
+15:18:43.163125 [debug]:   Finished [  0.10s] resolving data tests
+15:18:43.166662 [debug]:    Started typechecking macros
+15:18:43.355285 [debug]:   Finished [  0.19s] typechecking macros
+15:18:43.365637 [info ]: Finished parsing [  0.46s] (6 nodes, 0 skipped, 0 errors)
+15:18:43.518217 [info ]: New version available 2.0.11 (run `dbt system update`)
+15:18:43.552378 [info ]: suggestion: Run 'dbt deps' to see the latest fusion compatible packages. For compatibility errors, try the autofix script: https://github.com/dbt-labs/dbt-autofix
+15:18:43.552378 [info ]: 
+==================== Execution Summary =====================
+Finished 'build' with 2 errors for target 'dev' [799ms]
+==================== 2026-11-06T15:21:17.909815Z | 01a1b173-2d51-7430-86c3-5a4234933058 ====================
+15:21:17.910199 [info ]: dbt 2.0.9
+15:21:17.910854 [info ]: Started loading project
+15:21:17.917410 [info ]: Loading profiles.yml
+15:21:17.923861 [debug]:    Started loading packages
+15:21:17.928383 [debug]:     Loaded [  0.00s] packages
+15:21:17.931326 [info ]: Finished loading project [  0.02s]
+15:21:17.932914 [info ]: Started parsing (6 nodes)
+15:21:17.978157 [debug]: Finished parsing models/sources.yml [  0.00s]
+15:21:17.979067 [debug]:    Started building model nodes
+15:21:17.979067 [debug]:    Started building model nodes
+15:21:17.979134 [debug]:   Finished [  0.00s] building model nodes
+15:21:17.979134 [debug]:   Finished [  0.00s] building model nodes
+15:21:17.979179 [debug]: Finished parsing models/staging/schema.yml [  0.00s]
+15:21:17.979929 [debug]:    Started resolving data tests
+15:21:17.979938 [debug]:    Started resolving data tests
+15:21:17.980012 [debug]:   Finished [  0.00s] resolving data tests
+15:21:17.980012 [debug]:   Finished [  0.00s] resolving data tests
+15:21:17.982636 [debug]: Finished parsing models/staging/stg_customers.sql [  0.00s]
+15:21:17.984153 [debug]: Finished parsing models/staging/stg_order_items.sql [  0.00s]
+15:21:17.985569 [debug]: Finished parsing models/staging/stg_orders.sql [  0.00s]
+15:21:17.986764 [debug]: Finished parsing models/staging/stg_products.sql [  0.00s]
+15:21:17.987030 [debug]:    Started building model nodes
+15:21:17.996022 [debug]:   Finished [  0.01s] building model nodes
+15:21:17.996650 [debug]:    Started resolving data tests
+15:21:18.008520 [debug]: Finished parsing target\generic_tests\unique_stg_customers_customer_id.sql [  0.01s]
+15:21:18.019432 [debug]: Finished parsing target\generic_tests\not_null_stg_customers_customer_id.sql [  0.01s]
+15:21:18.021855 [debug]: Finished parsing target\generic_tests\unique_stg_order_items_order_item_id.sql [  0.00s]
+15:21:18.023594 [debug]: Finished parsing target\generic_tests\not_null_stg_order_items_order_item_id.sql [  0.00s]
+15:21:18.025444 [debug]: Finished parsing target\generic_tests\relationships_stg_order_items_85fcc371bcae46211ede4a7fca07283f.sql [  0.00s]
+15:21:18.027235 [debug]: Finished parsing target\generic_tests\unique_stg_products_product_id.sql [  0.00s]
+15:21:18.028962 [debug]: Finished parsing target\generic_tests\not_null_stg_products_product_id.sql [  0.00s]
+15:21:18.031418 [debug]:   Finished [  0.03s] resolving data tests
+15:21:18.031975 [debug]:    Started typechecking macros
+15:21:18.198477 [debug]:   Finished [  0.17s] typechecking macros
+15:21:18.200383 [info ]: Finished parsing [  0.27s] (6 nodes, 0 skipped, 0 errors)
+15:21:18.283072 [info ]: Started scheduling
+15:21:18.289349 [info ]: Finished scheduling [  0.01s]
+15:21:18.300751 [debug]: Initializing schema store with entry: Frontier(CanonicalFqn { catalog: "ecommerce", schema: "main", table: "raw_order_items" }) and interval: None
+15:21:18.301141 [debug]: Initializing schema store with entry: Frontier(CanonicalFqn { catalog: "ecommerce", schema: "main", table: "raw_orders" }) and interval: None
+15:21:18.301148 [debug]: Initializing schema store with entry: Frontier(CanonicalFqn { catalog: "ecommerce", schema: "main", table: "raw_customers" }) and interval: None
+15:21:18.301152 [debug]: Initializing schema store with entry: Frontier(CanonicalFqn { catalog: "ecommerce", schema: "main", table: "raw_products" }) and interval: None
+15:21:18.325393 [info ]: Started building task graph
+15:21:18.333415 [info ]: Finished building task graph [  0.01s]
+15:21:18.395735 [debug]: DuckDB driver resolved: duckdb 1.5.4
+15:21:18.570417 [debug]: create_debug_span(...).entered() took 1.343ms
+15:21:18.581345 [debug]: stmt.execute() (submit+wait_for_completion, returns reader) took 2.125ms
+15:21:18.581602 [debug]: reader.schema() took 231.8µs
+15:21:18.581656 [debug]: batch-consume loop (for res in reader) took 38.3µs
+15:21:18.581823 [debug]: do_execute(conn) (closure: stmt.execute + schema + batch loop) took 11.3771ms
+15:21:18.583007 [debug]: concat_batches + normalize_result_column_names took 1.1708ms
+15:21:18.583733 [debug]: record_current_span_status_from_attrs took 709.3µs
+15:21:18.584198 [debug]: Query executed on node unknown:
+/* {"app": "dbt", "connection_name": "", "dbt_version": "2.0.0", "profile_name": "ecommerce_docs", "target_name": "dev"} */
+
+    
+    select schema_name
+    from system.information_schema.schemata
+    
+    where lower(catalog_name) = '"ecommerce"'
+    
+  
+  
+15:21:18.584238 [debug]: drop(query_span_guard) (span exit/export) took 487.2µs
+15:21:18.591274 [debug]: create_debug_span(...).entered() took 16.3µs
+15:21:18.593133 [debug]: stmt.execute() (submit+wait_for_completion, returns reader) took 1.1632ms
+15:21:18.593155 [debug]: reader.schema() took 500ns
+15:21:18.593176 [debug]: batch-consume loop (for res in reader) took 16.2µs
+15:21:18.593193 [debug]: do_execute(conn) (closure: stmt.execute + schema + batch loop) took 1.895ms
+15:21:18.593208 [debug]: concat_batches + normalize_result_column_names took 8µs
+15:21:18.593215 [debug]: record_current_span_status_from_attrs took 3.5µs
+15:21:18.593222 [debug]: Query executed on node unknown:
+/* {"app": "dbt", "connection_name": "", "dbt_version": "2.0.0", "profile_name": "ecommerce_docs", "target_name": "dev"} */
+
+    
+        select type from duckdb_databases()
+        where lower(database_name)='ecommerce'
+        and type='sqlite'
+    
+  
+15:21:18.593246 [debug]: drop(query_span_guard) (span exit/export) took 27.6µs
+15:21:18.594493 [debug]: create_debug_span(...).entered() took 12.7µs
+15:21:18.595013 [debug]: stmt.execute() (submit+wait_for_completion, returns reader) took 101.3µs
+15:21:18.595029 [debug]: reader.schema() took 400ns
+15:21:18.595047 [debug]: do_execute(conn) (closure: stmt.execute + schema + batch loop) took 534.8µs
+15:21:18.595056 [debug]: concat_batches + normalize_result_column_names took 4.9µs
+15:21:18.595061 [debug]: record_current_span_status_from_attrs took 2.4µs
+15:21:18.595066 [debug]: Query executed on node unknown:
+/* {"app": "dbt", "connection_name": "", "dbt_version": "2.0.0", "profile_name": "ecommerce_docs", "target_name": "dev"} */
+
+    
+    
+        create schema if not exists "ecommerce"."main"
+    
+15:21:18.595083 [debug]: drop(query_span_guard) (span exit/export) took 19.4µs
+15:21:18.599499 [info ]: Started rendering (11 nodes)
+15:21:18.600439 [info ]: Started model main.stg_products
+15:21:18.600937 [debug]: Started rendering model main.stg_products
+15:21:18.602026 [info ]: Started model main.stg_orders
+15:21:18.602052 [debug]: Started rendering model main.stg_orders
+15:21:18.602071 [info ]: Started model main.stg_order_items
+15:21:18.602087 [debug]: Started rendering model main.stg_order_items
+15:21:18.602102 [info ]: Started model main.stg_customers
+15:21:18.602112 [debug]: Started rendering model main.stg_customers
+15:21:18.617631 [debug]: Compiled SQL for node model.ecommerce_docs.stg_orders at target\compiled\ecommerce_docs\models\staging\stg_orders.sql
+15:21:18.617611 [debug]: Compiled SQL for node model.ecommerce_docs.stg_order_items at target\compiled\ecommerce_docs\models\staging\stg_order_items.sql
+15:21:18.617611 [debug]: Compiled SQL for node model.ecommerce_docs.stg_customers at target\compiled\ecommerce_docs\models\staging\stg_customers.sql
+15:21:18.617611 [debug]: Compiled SQL for node model.ecommerce_docs.stg_products at target\compiled\ecommerce_docs\models\staging\stg_products.sql
+15:21:18.620792 [debug]: Finished rendering [  0.02s] model main.stg_products [success]
+15:21:18.621972 [info ]: Started analyzing (11 nodes)
+15:21:18.622103 [debug]: Started analyzing model main.stg_products
+15:21:18.622754 [debug]: Finished rendering [  0.02s] model main.stg_customers [success]
+15:21:18.623022 [debug]: Started analyzing model main.stg_customers
+15:21:18.623059 [debug]: Finished rendering [  0.02s] model main.stg_orders [success]
+15:21:18.623316 [debug]: Started analyzing model main.stg_orders
+15:21:18.623350 [debug]: Finished rendering [  0.02s] model main.stg_order_items [success]
+15:21:18.623607 [debug]: Started analyzing model main.stg_order_items
+15:21:18.653985 [debug]: Finished analyzing [  0.03s] model main.stg_orders [success]
+15:21:18.654264 [info ]: Started running (11 nodes)
+15:21:18.654442 [info ]: Started running model main.stg_orders
+15:21:18.654481 [debug]: Finished analyzing [  0.03s] model main.stg_customers [success]
+15:21:18.654767 [info ]: Started running model main.stg_customers
+15:21:18.654803 [debug]: Finished analyzing [  0.03s] model main.stg_products [success]
+15:21:18.655079 [info ]: Started running model main.stg_products
+15:21:18.655113 [debug]: Finished analyzing [  0.03s] model main.stg_order_items [success]
+15:21:18.655353 [info ]: Started running model main.stg_order_items
+15:21:18.689887 [debug]: create_debug_span(...).entered() took 22.5µs
+15:21:18.689887 [debug]: create_debug_span(...).entered() took 30.1µs
+15:21:18.689894 [debug]: create_debug_span(...).entered() took 40.1µs
+15:21:18.689918 [debug]: create_debug_span(...).entered() took 15.9µs
+15:21:18.699475 [debug]: stmt.execute() (submit+wait_for_completion, returns reader) took 5.756ms
+15:21:18.699475 [debug]: stmt.execute() (submit+wait_for_completion, returns reader) took 6.056ms
+15:21:18.699475 [debug]: stmt.execute() (submit+wait_for_completion, returns reader) took 6.0733ms
+15:21:18.699501 [debug]: stmt.execute() (submit+wait_for_completion, returns reader) took 6.0957ms
+15:21:18.699508 [debug]: reader.schema() took 800ns
+15:21:18.699508 [debug]: reader.schema() took 800ns
+15:21:18.699508 [debug]: reader.schema() took 700ns
+15:21:18.699512 [debug]: reader.schema() took 100ns
+15:21:18.699888 [debug]: batch-consume loop (for res in reader) took 370.3µs
+15:21:18.699890 [debug]: batch-consume loop (for res in reader) took 371.5µs
+15:21:18.699892 [debug]: batch-consume loop (for res in reader) took 372.8µs
+15:21:18.699895 [debug]: batch-consume loop (for res in reader) took 378.6µs
+15:21:18.699938 [debug]: do_execute(conn) (closure: stmt.execute + schema + batch loop) took 10.0283ms
+15:21:18.699938 [debug]: do_execute(conn) (closure: stmt.execute + schema + batch loop) took 10.0291ms
+15:21:18.699939 [debug]: do_execute(conn) (closure: stmt.execute + schema + batch loop) took 10.0288ms
+15:21:18.699939 [debug]: do_execute(conn) (closure: stmt.execute + schema + batch loop) took 10.013ms
+15:21:18.702190 [debug]: concat_batches + normalize_result_column_names took 2.2317ms
+15:21:18.702195 [debug]: concat_batches + normalize_result_column_names took 2.2402ms
+15:21:18.702229 [debug]: record_current_span_status_from_attrs took 4µs
+15:21:18.702230 [debug]: record_current_span_status_from_attrs took 3.7µs
+15:21:18.702242 [debug]: Query executed on node model.ecommerce_docs.stg_customers:
+SELECT table_catalog, table_schema, table_name, table_type FROM information_schema.tables WHERE table_schema = 'main' AND lower(table_catalog) = lower('ecommerce')
+15:21:18.702244 [debug]: Query executed on node model.ecommerce_docs.stg_products:
+SELECT table_catalog, table_schema, table_name, table_type FROM information_schema.tables WHERE table_schema = 'main' AND lower(table_catalog) = lower('ecommerce')
+15:21:18.702278 [debug]: drop(query_span_guard) (span exit/export) took 41.2µs
+15:21:18.702279 [debug]: drop(query_span_guard) (span exit/export) took 37.1µs
+15:21:18.702190 [debug]: concat_batches + normalize_result_column_names took 2.2336ms
+15:21:18.702440 [debug]: concat_batches + normalize_result_column_names took 2.4911ms
+15:21:18.702450 [debug]: record_current_span_status_from_attrs took 1.6µs
+15:21:18.702453 [debug]: record_current_span_status_from_attrs took 2.4µs
+15:21:18.702460 [debug]: Query executed on node model.ecommerce_docs.stg_order_items:
+SELECT table_catalog, table_schema, table_name, table_type FROM information_schema.tables WHERE table_schema = 'main' AND lower(table_catalog) = lower('ecommerce')
+15:21:18.702463 [debug]: Query executed on node model.ecommerce_docs.stg_orders:
+SELECT table_catalog, table_schema, table_name, table_type FROM information_schema.tables WHERE table_schema = 'main' AND lower(table_catalog) = lower('ecommerce')
+15:21:18.702480 [debug]: drop(query_span_guard) (span exit/export) took 19µs
+15:21:18.702481 [debug]: drop(query_span_guard) (span exit/export) took 25.7µs
+15:21:18.712264 [debug]: Writing runtime sql for node "model.ecommerce_docs.stg_customers"
+15:21:18.712264 [debug]: Writing runtime sql for node "model.ecommerce_docs.stg_orders"
+15:21:18.712264 [debug]: Writing runtime sql for node "model.ecommerce_docs.stg_order_items"
+15:21:18.712307 [debug]: Writing runtime sql for node "model.ecommerce_docs.stg_products"
+15:21:18.715438 [debug]: create_debug_span(...).entered() took 26.9µs
+15:21:18.715441 [debug]: create_debug_span(...).entered() took 15.6µs
+15:21:18.715438 [debug]: create_debug_span(...).entered() took 19.2µs
+15:21:18.715438 [debug]: create_debug_span(...).entered() took 21.9µs
+15:21:18.719919 [debug]: stmt.execute() (submit+wait_for_completion, returns reader) took 3.5674ms
+15:21:18.719955 [debug]: reader.schema() took 600ns
+15:21:18.719989 [debug]: do_execute(conn) (closure: stmt.execute + schema + batch loop) took 4.5108ms
+15:21:18.720003 [debug]: concat_batches + normalize_result_column_names took 6.6µs
+15:21:18.720027 [debug]: record_current_span_status_from_attrs took 14.3µs
+15:21:18.720037 [debug]: Query executed on node model.ecommerce_docs.stg_customers:
+/* {"app": "dbt", "dbt_version": "2.0.0", "node_id": "model.ecommerce_docs.stg_customers", "profile_name": "ecommerce_docs", "target_name": "dev"} */
+
+  
+  create view "ecommerce"."main"."stg_customers__dbt_tmp" as (
+    select
+    customer_id,
+    customer_name,
+    city,
+    customer_segment,
+    signup_date
+from "ecommerce"."main"."raw_customers"
+  );
+
+15:21:18.720088 [debug]: drop(query_span_guard) (span exit/export) took 54.2µs
+15:21:18.721505 [debug]: stmt.execute() (submit+wait_for_completion, returns reader) took 5.0781ms
+15:21:18.721532 [debug]: reader.schema() took 900ns
+15:21:18.721563 [debug]: do_execute(conn) (closure: stmt.execute + schema + batch loop) took 6.0505ms
+15:21:18.721575 [debug]: concat_batches + normalize_result_column_names took 6.2µs
+15:21:18.721582 [debug]: record_current_span_status_from_attrs took 2.6µs
+15:21:18.721590 [debug]: Query executed on node model.ecommerce_docs.stg_order_items:
+/* {"app": "dbt", "dbt_version": "2.0.0", "node_id": "model.ecommerce_docs.stg_order_items", "profile_name": "ecommerce_docs", "target_name": "dev"} */
+
+  
+  create view "ecommerce"."main"."stg_order_items__dbt_tmp" as (
+    select
+    order_item_id,
+    order_id,
+    product_id,
+    quantity,
+    line_amount
+from "ecommerce"."main"."raw_order_items"
+  );
+
+15:21:18.721629 [debug]: drop(query_span_guard) (span exit/export) took 41.3µs
+15:21:18.723152 [debug]: stmt.execute() (submit+wait_for_completion, returns reader) took 6.8126ms
+15:21:18.723178 [debug]: reader.schema() took 400ns
+15:21:18.723210 [debug]: do_execute(conn) (closure: stmt.execute + schema + batch loop) took 7.7188ms
+15:21:18.723220 [debug]: concat_batches + normalize_result_column_names took 5.5µs
+15:21:18.723226 [debug]: record_current_span_status_from_attrs took 2.7µs
+15:21:18.723234 [debug]: Query executed on node model.ecommerce_docs.stg_products:
+/* {"app": "dbt", "dbt_version": "2.0.0", "node_id": "model.ecommerce_docs.stg_products", "profile_name": "ecommerce_docs", "target_name": "dev"} */
+
+  
+  create view "ecommerce"."main"."stg_products__dbt_tmp" as (
+    select
+    product_id,
+    product_name,
+    category,
+    list_price,
+    is_active
+from "ecommerce"."main"."raw_products"
+  );
+
+15:21:18.723263 [debug]: drop(query_span_guard) (span exit/export) took 31.8µs
+15:21:18.724591 [debug]: stmt.execute() (submit+wait_for_completion, returns reader) took 7.2157ms
+15:21:18.724615 [debug]: reader.schema() took 300ns
+15:21:18.724643 [debug]: do_execute(conn) (closure: stmt.execute + schema + batch loop) took 9.1159ms
+15:21:18.724652 [debug]: concat_batches + normalize_result_column_names took 5.6µs
+15:21:18.724658 [debug]: record_current_span_status_from_attrs took 2.5µs
+15:21:18.724664 [debug]: Query executed on node model.ecommerce_docs.stg_orders:
+/* {"app": "dbt", "dbt_version": "2.0.0", "node_id": "model.ecommerce_docs.stg_orders", "profile_name": "ecommerce_docs", "target_name": "dev"} */
+
+  
+  create view "ecommerce"."main"."stg_orders__dbt_tmp" as (
+    select
+    cast(order_id as bigint) as order_id,
+    cast(customer_id as bigint) as customer_id,
+    order_date,
+    status,
+    quantity,
+    unit_price,
+    amount
+from "ecommerce"."main"."raw_orders"
+  );
+
+15:21:18.724689 [debug]: drop(query_span_guard) (span exit/export) took 27.6µs
+15:21:18.726078 [debug]: create_debug_span(...).entered() took 17µs
+15:21:18.726083 [debug]: create_debug_span(...).entered() took 11.3µs
+15:21:18.726095 [debug]: create_debug_span(...).entered() took 10.6µs
+15:21:18.726734 [debug]: create_debug_span(...).entered() took 14.4µs
+15:21:18.728416 [debug]: stmt.execute() (submit+wait_for_completion, returns reader) took 1.8459ms
+15:21:18.728438 [debug]: reader.schema() took 300ns
+15:21:18.728459 [debug]: do_execute(conn) (closure: stmt.execute + schema + batch loop) took 2.3552ms
+15:21:18.728472 [debug]: concat_batches + normalize_result_column_names took 7µs
+15:21:18.728483 [debug]: record_current_span_status_from_attrs took 3.7µs
+15:21:18.728496 [debug]: Query executed on node model.ecommerce_docs.stg_customers:
+/* {"app": "dbt", "dbt_version": "2.0.0", "node_id": "model.ecommerce_docs.stg_customers", "profile_name": "ecommerce_docs", "target_name": "dev"} */
+alter view "ecommerce"."main"."stg_customers" rename to "stg_customers__dbt_backup"
+15:21:18.728522 [debug]: drop(query_span_guard) (span exit/export) took 30.5µs
+15:21:18.729808 [debug]: stmt.execute() (submit+wait_for_completion, returns reader) took 3.2306ms
+15:21:18.729833 [debug]: reader.schema() took 400ns
+15:21:18.729853 [debug]: do_execute(conn) (closure: stmt.execute + schema + batch loop) took 3.754ms
+15:21:18.729862 [debug]: concat_batches + normalize_result_column_names took 5.1µs
+15:21:18.729868 [debug]: record_current_span_status_from_attrs took 2.6µs
+15:21:18.729879 [debug]: Query executed on node model.ecommerce_docs.stg_products:
+/* {"app": "dbt", "dbt_version": "2.0.0", "node_id": "model.ecommerce_docs.stg_products", "profile_name": "ecommerce_docs", "target_name": "dev"} */
+alter view "ecommerce"."main"."stg_products" rename to "stg_products__dbt_backup"
+15:21:18.729906 [debug]: drop(query_span_guard) (span exit/export) took 31.2µs
+15:21:18.730662 [debug]: create_debug_span(...).entered() took 18.1µs
+15:21:18.731201 [debug]: stmt.execute() (submit+wait_for_completion, returns reader) took 4.6374ms
+15:21:18.731225 [debug]: reader.schema() took 400ns
+15:21:18.731259 [debug]: do_execute(conn) (closure: stmt.execute + schema + batch loop) took 5.1565ms
+15:21:18.731301 [debug]: concat_batches + normalize_result_column_names took 7.3µs
+15:21:18.731315 [debug]: record_current_span_status_from_attrs took 2.9µs
+15:21:18.731327 [debug]: Query executed on node model.ecommerce_docs.stg_order_items:
+/* {"app": "dbt", "dbt_version": "2.0.0", "node_id": "model.ecommerce_docs.stg_order_items", "profile_name": "ecommerce_docs", "target_name": "dev"} */
+alter view "ecommerce"."main"."stg_order_items" rename to "stg_order_items__dbt_backup"
+15:21:18.731360 [debug]: drop(query_span_guard) (span exit/export) took 36.9µs
+15:21:18.732017 [debug]: create_debug_span(...).entered() took 20.3µs
+15:21:18.732687 [debug]: stmt.execute() (submit+wait_for_completion, returns reader) took 5.7573ms
+15:21:18.732709 [debug]: reader.schema() took 500ns
+15:21:18.732732 [debug]: do_execute(conn) (closure: stmt.execute + schema + batch loop) took 5.9804ms
+15:21:18.732743 [debug]: concat_batches + normalize_result_column_names took 6.1µs
+15:21:18.732750 [debug]: record_current_span_status_from_attrs took 2.4µs
+15:21:18.732758 [debug]: Query executed on node model.ecommerce_docs.stg_orders:
+/* {"app": "dbt", "dbt_version": "2.0.0", "node_id": "model.ecommerce_docs.stg_orders", "profile_name": "ecommerce_docs", "target_name": "dev"} */
+alter view "ecommerce"."main"."stg_orders" rename to "stg_orders__dbt_backup"
+15:21:18.732789 [debug]: drop(query_span_guard) (span exit/export) took 34.1µs
+15:21:18.734354 [debug]: create_debug_span(...).entered() took 23.3µs
+15:21:18.734821 [debug]: stmt.execute() (submit+wait_for_completion, returns reader) took 2.0088ms
+15:21:18.734855 [debug]: reader.schema() took 500ns
+15:21:18.734887 [debug]: do_execute(conn) (closure: stmt.execute + schema + batch loop) took 2.8443ms
+15:21:18.734902 [debug]: concat_batches + normalize_result_column_names took 8.6µs
+15:21:18.734919 [debug]: record_current_span_status_from_attrs took 8.1µs
+15:21:18.734939 [debug]: Query executed on node model.ecommerce_docs.stg_products:
+/* {"app": "dbt", "dbt_version": "2.0.0", "node_id": "model.ecommerce_docs.stg_products", "profile_name": "ecommerce_docs", "target_name": "dev"} */
+alter view "ecommerce"."main"."stg_products__dbt_tmp" rename to "stg_products"
+15:21:18.734977 [debug]: drop(query_span_guard) (span exit/export) took 43.6µs
+15:21:18.736062 [debug]: create_debug_span(...).entered() took 25.8µs
+15:21:18.736389 [debug]: stmt.execute() (submit+wait_for_completion, returns reader) took 3.7026ms
+15:21:18.736410 [debug]: reader.schema() took 500ns
+15:21:18.736430 [debug]: do_execute(conn) (closure: stmt.execute + schema + batch loop) took 5.7387ms
+15:21:18.736440 [debug]: concat_batches + normalize_result_column_names took 5.3µs
+15:21:18.736447 [debug]: record_current_span_status_from_attrs took 2.4µs
+15:21:18.736455 [debug]: Query executed on node model.ecommerce_docs.stg_customers:
+/* {"app": "dbt", "dbt_version": "2.0.0", "node_id": "model.ecommerce_docs.stg_customers", "profile_name": "ecommerce_docs", "target_name": "dev"} */
+alter view "ecommerce"."main"."stg_customers__dbt_tmp" rename to "stg_customers"
+15:21:18.736484 [debug]: drop(query_span_guard) (span exit/export) took 32.5µs
+15:21:18.738239 [debug]: stmt.execute() (submit+wait_for_completion, returns reader) took 1.8523ms
+15:21:18.738264 [debug]: reader.schema() took 400ns
+15:21:18.738285 [debug]: do_execute(conn) (closure: stmt.execute + schema + batch loop) took 3.8988ms
+15:21:18.738294 [debug]: concat_batches + normalize_result_column_names took 5.4µs
+15:21:18.738301 [debug]: record_current_span_status_from_attrs took 2.7µs
+15:21:18.738309 [debug]: Query executed on node model.ecommerce_docs.stg_order_items:
+/* {"app": "dbt", "dbt_version": "2.0.0", "node_id": "model.ecommerce_docs.stg_order_items", "profile_name": "ecommerce_docs", "target_name": "dev"} */
+alter view "ecommerce"."main"."stg_order_items__dbt_tmp" rename to "stg_order_items"
+15:21:18.738335 [debug]: drop(query_span_guard) (span exit/export) took 30.2µs
+15:21:18.738834 [debug]: create_debug_span(...).entered() took 22.9µs
+15:21:18.739948 [debug]: stmt.execute() (submit+wait_for_completion, returns reader) took 3.3533ms
+15:21:18.739978 [debug]: reader.schema() took 400ns
+15:21:18.739990 [debug]: create_debug_span(...).entered() took 34µs
+15:21:18.740002 [debug]: do_execute(conn) (closure: stmt.execute + schema + batch loop) took 3.9105ms
+15:21:18.740014 [debug]: concat_batches + normalize_result_column_names took 6.1µs
+15:21:18.740022 [debug]: record_current_span_status_from_attrs took 2.9µs
+15:21:18.740030 [debug]: Query executed on node model.ecommerce_docs.stg_orders:
+/* {"app": "dbt", "dbt_version": "2.0.0", "node_id": "model.ecommerce_docs.stg_orders", "profile_name": "ecommerce_docs", "target_name": "dev"} */
+alter view "ecommerce"."main"."stg_orders__dbt_tmp" rename to "stg_orders"
+15:21:18.740061 [debug]: drop(query_span_guard) (span exit/export) took 34µs
+15:21:18.742033 [debug]: stmt.execute() (submit+wait_for_completion, returns reader) took 1.8276ms
+15:21:18.742065 [debug]: reader.schema() took 500ns
+15:21:18.742091 [debug]: do_execute(conn) (closure: stmt.execute + schema + batch loop) took 2.0887ms
+15:21:18.742104 [debug]: concat_batches + normalize_result_column_names took 6.8µs
+15:21:18.742112 [debug]: record_current_span_status_from_attrs took 3.5µs
+15:21:18.742123 [debug]: Query executed on node model.ecommerce_docs.stg_customers:
+/* {"app": "dbt", "dbt_version": "2.0.0", "node_id": "model.ecommerce_docs.stg_customers", "profile_name": "ecommerce_docs", "target_name": "dev"} */
+
+      drop view if exists "ecommerce"."main"."stg_customers__dbt_backup" cascade
+    
+15:21:18.742160 [debug]: drop(query_span_guard) (span exit/export) took 37.7µs
+15:21:18.742650 [debug]: create_debug_span(...).entered() took 22.7µs
+15:21:18.744217 [debug]: stmt.execute() (submit+wait_for_completion, returns reader) took 4.0339ms
+15:21:18.744247 [debug]: reader.schema() took 500ns
+15:21:18.744272 [debug]: do_execute(conn) (closure: stmt.execute + schema + batch loop) took 5.4108ms
+15:21:18.744287 [debug]: concat_batches + normalize_result_column_names took 7.2µs
+15:21:18.744295 [debug]: record_current_span_status_from_attrs took 3.2µs
+15:21:18.744306 [debug]: Query executed on node model.ecommerce_docs.stg_products:
+/* {"app": "dbt", "dbt_version": "2.0.0", "node_id": "model.ecommerce_docs.stg_products", "profile_name": "ecommerce_docs", "target_name": "dev"} */
+
+      drop view if exists "ecommerce"."main"."stg_products__dbt_backup" cascade
+    
+15:21:18.744342 [debug]: drop(query_span_guard) (span exit/export) took 40.1µs
+15:21:18.744948 [debug]: create_debug_span(...).entered() took 21.7µs
+15:21:18.746385 [debug]: stmt.execute() (submit+wait_for_completion, returns reader) took 2.0206ms
+15:21:18.746415 [debug]: reader.schema() took 500ns
+15:21:18.746450 [debug]: do_execute(conn) (closure: stmt.execute + schema + batch loop) took 3.7694ms
+15:21:18.746463 [debug]: concat_batches + normalize_result_column_names took 6.6µs
+15:21:18.746472 [debug]: record_current_span_status_from_attrs took 3.5µs
+15:21:18.746483 [debug]: Query executed on node model.ecommerce_docs.stg_order_items:
+/* {"app": "dbt", "dbt_version": "2.0.0", "node_id": "model.ecommerce_docs.stg_order_items", "profile_name": "ecommerce_docs", "target_name": "dev"} */
+
+      drop view if exists "ecommerce"."main"."stg_order_items__dbt_backup" cascade
+    
+15:21:18.746517 [debug]: drop(query_span_guard) (span exit/export) took 39.1µs
+15:21:18.748336 [debug]: stmt.execute() (submit+wait_for_completion, returns reader) took 1.8044ms
+15:21:18.748371 [debug]: reader.schema() took 700ns
+15:21:18.748397 [debug]: do_execute(conn) (closure: stmt.execute + schema + batch loop) took 3.4203ms
+15:21:18.748410 [debug]: concat_batches + normalize_result_column_names took 6.2µs
+15:21:18.748419 [debug]: record_current_span_status_from_attrs took 3.3µs
+15:21:18.748431 [debug]: Query executed on node model.ecommerce_docs.stg_orders:
+/* {"app": "dbt", "dbt_version": "2.0.0", "node_id": "model.ecommerce_docs.stg_orders", "profile_name": "ecommerce_docs", "target_name": "dev"} */
+
+      drop view if exists "ecommerce"."main"."stg_orders__dbt_backup" cascade
+    
+15:21:18.748471 [debug]: drop(query_span_guard) (span exit/export) took 44.8µs
+15:21:18.750604 [info ]: Finished running [  0.10s] model main.stg_order_items [success]
+15:21:18.751892 [info ]:  Succeeded model main.stg_order_items (view) [3 of 11 in 0.15s]
+15:21:18.754083 [info ]: Started test main_dbt_test__audit.unique_stg_order_items_order_item_id
+15:21:18.754109 [debug]: Started rendering test main_dbt_test__audit.unique_stg_order_items_order_item_id
+15:21:18.754141 [info ]: Started test main_dbt_test__audit.not_null_stg_order_items_order_item_id
+15:21:18.754151 [debug]: Started rendering test main_dbt_test__audit.not_null_stg_order_items_order_item_id
+15:21:18.754174 [info ]: Finished running [  0.10s] model main.stg_orders [success]
+15:21:18.754534 [info ]:  Succeeded model main.stg_orders (view) [2 of 11 in 0.15s]
+15:21:18.755161 [info ]: Finished running [  0.10s] model main.stg_products [success]
+15:21:18.755531 [info ]:  Succeeded model main.stg_products (view) [1 of 11 in 0.15s]
+15:21:18.756331 [info ]: Started test main_dbt_test__audit.unique_stg_products_product_id
+15:21:18.756360 [debug]: Started rendering test main_dbt_test__audit.unique_stg_products_product_id
+15:21:18.756406 [info ]: Started test main_dbt_test__audit.relationships_stg_order_items_product_id__product_id__ref_stg_products_
+15:21:18.756435 [debug]: Started rendering test main_dbt_test__audit.relationships_stg_order_items_product_id__product_id__ref_stg_products_
+15:21:18.756467 [info ]: Started test main_dbt_test__audit.not_null_stg_products_product_id
+15:21:18.756481 [debug]: Started rendering test main_dbt_test__audit.not_null_stg_products_product_id
+15:21:18.756521 [info ]: Finished running [  0.10s] model main.stg_customers [success]
+15:21:18.758594 [info ]:  Succeeded model main.stg_customers (view) [4 of 11 in 0.15s]
+15:21:18.759401 [info ]: Started test main_dbt_test__audit.unique_stg_customers_customer_id
+15:21:18.759417 [debug]: Started rendering test main_dbt_test__audit.unique_stg_customers_customer_id
+15:21:18.759716 [info ]: Started test main_dbt_test__audit.not_null_stg_customers_customer_id
+15:21:18.759757 [debug]: Started rendering test main_dbt_test__audit.not_null_stg_customers_customer_id
+15:21:18.773196 [debug]: Compiled SQL for node test.ecommerce_docs.not_null_stg_products_product_id.6373b0acf3 at target\compiled\ecommerce_docs\target\generic_tests\not_null_stg_products_product_id.sql
+15:21:18.773503 [debug]: Compiled SQL for node test.ecommerce_docs.unique_stg_products_product_id.7d950a1467 at target\compiled\ecommerce_docs\target\generic_tests\unique_stg_products_product_id.sql
+15:21:18.773545 [debug]: Compiled SQL for node test.ecommerce_docs.not_null_stg_customers_customer_id.e2cfb1f9aa at target\compiled\ecommerce_docs\target\generic_tests\not_null_stg_customers_customer_id.sql
+15:21:18.773632 [debug]: Finished rendering [  0.02s] test main_dbt_test__audit.not_null_stg_products_product_id [success]
+15:21:18.774089 [debug]: Compiled SQL for node test.ecommerce_docs.unique_stg_customers_customer_id.c7614daada at target\compiled\ecommerce_docs\target\generic_tests\unique_stg_customers_customer_id.sql
+15:21:18.774103 [debug]: Started analyzing test main_dbt_test__audit.not_null_stg_products_product_id
+15:21:18.774173 [debug]: Finished rendering [  0.02s] test main_dbt_test__audit.unique_stg_products_product_id [success]
+15:21:18.774440 [debug]: Started analyzing test main_dbt_test__audit.unique_stg_products_product_id
+15:21:18.774545 [debug]: Compiled SQL for node test.ecommerce_docs.unique_stg_order_items_order_item_id.90e333a108 at target\compiled\ecommerce_docs\target\generic_tests\unique_stg_order_items_order_item_id.sql
+15:21:18.774485 [debug]: Finished rendering [  0.01s] test main_dbt_test__audit.not_null_stg_customers_customer_id [success]
+15:21:18.774824 [debug]: Compiled SQL for node test.ecommerce_docs.relationships_stg_order_items_product_id__product_id__ref_stg_products_.886a82c26c at target\compiled\ecommerce_docs\target\generic_tests\relationships_stg_order_items_85fcc371bcae46211ede4a7fca07283f.sql
+15:21:18.774834 [debug]: Started analyzing test main_dbt_test__audit.not_null_stg_customers_customer_id
+15:21:18.774899 [debug]: Finished rendering [  0.02s] test main_dbt_test__audit.unique_stg_customers_customer_id [success]
+15:21:18.775065 [debug]: Started analyzing test main_dbt_test__audit.unique_stg_customers_customer_id
+15:21:18.775111 [debug]: Finished rendering [  0.02s] test main_dbt_test__audit.unique_stg_order_items_order_item_id [success]
+15:21:18.775829 [debug]: Started analyzing test main_dbt_test__audit.unique_stg_order_items_order_item_id
+15:21:18.776672 [debug]: Compiled SQL for node test.ecommerce_docs.not_null_stg_order_items_order_item_id.26a7e2bc35 at target\compiled\ecommerce_docs\target\generic_tests\not_null_stg_order_items_order_item_id.sql
+15:21:18.775913 [debug]: Finished rendering [  0.02s] test main_dbt_test__audit.relationships_stg_order_items_product_id__product_id__ref_stg_products_ [success]
+15:21:18.777953 [debug]: Started analyzing test main_dbt_test__audit.relationships_stg_order_items_product_id__product_id__ref_stg_products_
+15:21:18.778073 [debug]: Finished rendering [  0.02s] test main_dbt_test__audit.not_null_stg_order_items_order_item_id [success]
+15:21:18.778395 [info ]: Finished rendering [  0.18s] (11 nodes, 0 skipped, 0 errors)
+15:21:18.779618 [debug]: Started analyzing test main_dbt_test__audit.not_null_stg_order_items_order_item_id
+15:21:18.779691 [debug]: Finished analyzing [  0.00s] test main_dbt_test__audit.not_null_stg_customers_customer_id [success]
+15:21:18.779894 [info ]: Started running test main_dbt_test__audit.not_null_stg_customers_customer_id
+15:21:18.779953 [debug]: Finished analyzing [  0.01s] test main_dbt_test__audit.not_null_stg_products_product_id [success]
+15:21:18.780166 [info ]: Started running test main_dbt_test__audit.not_null_stg_products_product_id
+15:21:18.780218 [debug]: Finished analyzing [  0.00s] test main_dbt_test__audit.not_null_stg_order_items_order_item_id [success]
+15:21:18.780373 [info ]: Started running test main_dbt_test__audit.not_null_stg_order_items_order_item_id
+15:21:18.782533 [debug]: Finished analyzing [  0.01s] test main_dbt_test__audit.unique_stg_customers_customer_id [success]
+15:21:18.782836 [info ]: Started running test main_dbt_test__audit.unique_stg_customers_customer_id
+15:21:18.782908 [debug]: Finished analyzing [  0.01s] test main_dbt_test__audit.unique_stg_order_items_order_item_id [success]
+15:21:18.783122 [info ]: Started running test main_dbt_test__audit.unique_stg_order_items_order_item_id
+15:21:18.783210 [debug]: Finished analyzing [  0.01s] test main_dbt_test__audit.unique_stg_products_product_id [success]
+15:21:18.783374 [info ]: Started running test main_dbt_test__audit.unique_stg_products_product_id
+15:21:18.784866 [debug]: Writing runtime sql for node "test.ecommerce_docs.not_null_stg_products_product_id.6373b0acf3"
+15:21:18.785319 [debug]: Writing runtime sql for node "test.ecommerce_docs.not_null_stg_order_items_order_item_id.26a7e2bc35"
+15:21:18.785317 [debug]: Writing runtime sql for node "test.ecommerce_docs.not_null_stg_customers_customer_id.e2cfb1f9aa"
+15:21:18.786938 [debug]: Writing runtime sql for node "test.ecommerce_docs.unique_stg_customers_customer_id.c7614daada"
+15:21:18.786976 [debug]: Writing runtime sql for node "test.ecommerce_docs.unique_stg_order_items_order_item_id.90e333a108"
+15:21:18.787025 [debug]: Writing runtime sql for node "test.ecommerce_docs.unique_stg_products_product_id.7d950a1467"
+15:21:18.790265 [debug]: Finished analyzing [  0.01s] test main_dbt_test__audit.relationships_stg_order_items_product_id__product_id__ref_stg_products_ [success]
+15:21:18.792117 [debug]: create_debug_span(...).entered() took 41.3µs
+15:21:18.790501 [info ]: Finished analyzing [  0.17s] (11 nodes, 0 skipped, 0 errors)
+15:21:18.793019 [info ]: Started running test main_dbt_test__audit.relationships_stg_order_items_product_id__product_id__ref_stg_products_
+15:21:18.794909 [debug]: create_debug_span(...).entered() took 42.1µs
+15:21:18.794969 [debug]: create_debug_span(...).entered() took 19.2µs
+15:21:18.795867 [debug]: create_debug_span(...).entered() took 38µs
+15:21:18.797445 [debug]: Writing runtime sql for node "test.ecommerce_docs.relationships_stg_order_items_product_id__product_id__ref_stg_products_.886a82c26c"
+15:21:18.797496 [debug]: create_debug_span(...).entered() took 26.5µs
+15:21:18.797800 [debug]: create_debug_span(...).entered() took 31.4µs
+15:21:18.798866 [debug]: stmt.execute() (submit+wait_for_completion, returns reader) took 1.1194ms
+15:21:18.798866 [debug]: stmt.execute() (submit+wait_for_completion, returns reader) took 1.2712ms
+15:21:18.798904 [debug]: reader.schema() took 500ns
+15:21:18.798904 [debug]: reader.schema() took 500ns
+15:21:18.799000 [debug]: batch-consume loop (for res in reader) took 83.6µs
+15:21:18.799007 [debug]: batch-consume loop (for res in reader) took 92.8µs
+15:21:18.799027 [debug]: stmt.execute() (submit+wait_for_completion, returns reader) took 281.8µs
+15:21:18.799042 [debug]: reader.schema() took 300ns
+15:21:18.799086 [debug]: do_execute(conn) (closure: stmt.execute + schema + batch loop) took 6.9379ms
+15:21:18.799086 [debug]: do_execute(conn) (closure: stmt.execute + schema + batch loop) took 4.1027ms
+15:21:18.799148 [debug]: batch-consume loop (for res in reader) took 94.1µs
+15:21:18.799194 [debug]: do_execute(conn) (closure: stmt.execute + schema + batch loop) took 1.3655ms
+15:21:18.799475 [debug]: concat_batches + normalize_result_column_names took 370.8µs
+15:21:18.799475 [debug]: concat_batches + normalize_result_column_names took 370.5µs
+15:21:18.799509 [debug]: record_current_span_status_from_attrs took 4µs
+15:21:18.799509 [debug]: record_current_span_status_from_attrs took 3.8µs
+15:21:18.799524 [debug]: Query executed on node test.ecommerce_docs.not_null_stg_customers_customer_id.e2cfb1f9aa:
+/* {"app": "dbt", "dbt_version": "2.0.0", "node_id": "test.ecommerce_docs.not_null_stg_customers_customer_id.e2cfb1f9aa", "profile_name": "ecommerce_docs", "target_name": "dev"} */
+
+    
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+
+
+select customer_id
+from "ecommerce"."main"."stg_customers"
+where customer_id is null
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+15:21:18.799520 [debug]: concat_batches + normalize_result_column_names took 309.6µs
+15:21:18.799527 [debug]: Query executed on node test.ecommerce_docs.not_null_stg_products_product_id.6373b0acf3:
+/* {"app": "dbt", "dbt_version": "2.0.0", "node_id": "test.ecommerce_docs.not_null_stg_products_product_id.6373b0acf3", "profile_name": "ecommerce_docs", "target_name": "dev"} */
+
+    
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+
+
+select product_id
+from "ecommerce"."main"."stg_products"
+where product_id is null
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+15:21:18.799538 [debug]: record_current_span_status_from_attrs took 2.3µs
+15:21:18.799551 [debug]: Query executed on node test.ecommerce_docs.not_null_stg_order_items_order_item_id.26a7e2bc35:
+/* {"app": "dbt", "dbt_version": "2.0.0", "node_id": "test.ecommerce_docs.not_null_stg_order_items_order_item_id.26a7e2bc35", "profile_name": "ecommerce_docs", "target_name": "dev"} */
+
+    
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+
+
+select order_item_id
+from "ecommerce"."main"."stg_order_items"
+where order_item_id is null
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+15:21:18.799561 [debug]: drop(query_span_guard) (span exit/export) took 42.6µs
+15:21:18.799560 [debug]: drop(query_span_guard) (span exit/export) took 42.1µs
+15:21:18.799582 [debug]: drop(query_span_guard) (span exit/export) took 34.7µs
+15:21:18.801171 [debug]: create_debug_span(...).entered() took 31.2µs
+15:21:18.802203 [info ]: Finished running [  0.02s] test main_dbt_test__audit.not_null_stg_customers_customer_id [pass]
+15:21:18.802615 [info ]:     Passed test  not_null_stg_customers_customer_id [11 of 11 in 0.04s]
+15:21:18.805230 [debug]: stmt.execute() (submit+wait_for_completion, returns reader) took 5.8986ms
+15:21:18.805291 [debug]: reader.schema() took 600ns
+15:21:18.804752 [info ]: Finished running [  0.02s] test main_dbt_test__audit.not_null_stg_products_product_id [pass]
+15:21:18.805394 [debug]: batch-consume loop (for res in reader) took 91.6µs
+15:21:18.805463 [debug]: do_execute(conn) (closure: stmt.execute + schema + batch loop) took 9.5591ms
+15:21:18.805484 [debug]: concat_batches + normalize_result_column_names took 7.4µs
+15:21:18.805496 [debug]: record_current_span_status_from_attrs took 4.4µs
+15:21:18.805510 [debug]: Query executed on node test.ecommerce_docs.unique_stg_customers_customer_id.c7614daada:
+/* {"app": "dbt", "dbt_version": "2.0.0", "node_id": "test.ecommerce_docs.unique_stg_customers_customer_id.c7614daada", "profile_name": "ecommerce_docs", "target_name": "dev"} */
+
+    
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+select
+    customer_id as unique_field,
+    count(*) as n_records
+
+from "ecommerce"."main"."stg_customers"
+where customer_id is not null
+group by customer_id
+having count(*) > 1
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+15:21:18.805550 [debug]: drop(query_span_guard) (span exit/export) took 46.5µs
+15:21:18.805900 [debug]: stmt.execute() (submit+wait_for_completion, returns reader) took 6.5946ms
+15:21:18.805931 [debug]: reader.schema() took 500ns
+15:21:18.806033 [debug]: batch-consume loop (for res in reader) took 91µs
+15:21:18.806108 [debug]: do_execute(conn) (closure: stmt.execute + schema + batch loop) took 8.5943ms
+15:21:18.806130 [debug]: concat_batches + normalize_result_column_names took 7µs
+15:21:18.806167 [debug]: record_current_span_status_from_attrs took 5µs
+15:21:18.806183 [debug]: Query executed on node test.ecommerce_docs.unique_stg_order_items_order_item_id.90e333a108:
+/* {"app": "dbt", "dbt_version": "2.0.0", "node_id": "test.ecommerce_docs.unique_stg_order_items_order_item_id.90e333a108", "profile_name": "ecommerce_docs", "target_name": "dev"} */
+
+    
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+select
+    order_item_id as unique_field,
+    count(*) as n_records
+
+from "ecommerce"."main"."stg_order_items"
+where order_item_id is not null
+group by order_item_id
+having count(*) > 1
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+15:21:18.805378 [info ]:     Passed test  not_null_stg_products_product_id [9 of 11 in 0.05s]
+15:21:18.806228 [debug]: drop(query_span_guard) (span exit/export) took 50.5µs
+15:21:18.806287 [info ]: Finished running [  0.03s] test main_dbt_test__audit.not_null_stg_order_items_order_item_id [pass]
+15:21:18.806608 [debug]: stmt.execute() (submit+wait_for_completion, returns reader) took 7.2925ms
+15:21:18.806640 [debug]: reader.schema() took 600ns
+15:21:18.806741 [debug]: batch-consume loop (for res in reader) took 90.5µs
+15:21:18.806814 [debug]: do_execute(conn) (closure: stmt.execute + schema + batch loop) took 11.869ms
+15:21:18.806836 [debug]: concat_batches + normalize_result_column_names took 6.9µs
+15:21:18.806848 [debug]: record_current_span_status_from_attrs took 3.9µs
+15:21:18.806861 [debug]: Query executed on node test.ecommerce_docs.unique_stg_products_product_id.7d950a1467:
+/* {"app": "dbt", "dbt_version": "2.0.0", "node_id": "test.ecommerce_docs.unique_stg_products_product_id.7d950a1467", "profile_name": "ecommerce_docs", "target_name": "dev"} */
+
+    
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+select
+    product_id as unique_field,
+    count(*) as n_records
+
+from "ecommerce"."main"."stg_products"
+where product_id is not null
+group by product_id
+having count(*) > 1
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+15:21:18.806900 [debug]: drop(query_span_guard) (span exit/export) took 43.2µs
+15:21:18.806463 [info ]:     Passed test  not_null_stg_order_items_order_item_id [6 of 11 in 0.05s]
+15:21:18.807893 [info ]: Finished running [  0.03s] test main_dbt_test__audit.unique_stg_customers_customer_id [pass]
+15:21:18.809292 [info ]:     Passed test  unique_stg_customers_customer_id [10 of 11 in 0.05s]
+15:21:18.811159 [info ]: Finished running [  0.03s] test main_dbt_test__audit.unique_stg_order_items_order_item_id [pass]
+15:21:18.811453 [info ]:     Passed test  unique_stg_order_items_order_item_id [5 of 11 in 0.05s]
+15:21:18.812594 [info ]: Finished running [  0.03s] test main_dbt_test__audit.unique_stg_products_product_id [pass]
+15:21:18.812856 [info ]:     Passed test  unique_stg_products_product_id [7 of 11 in 0.05s]
+15:21:18.814445 [debug]: stmt.execute() (submit+wait_for_completion, returns reader) took 8.6715ms
+15:21:18.814476 [debug]: reader.schema() took 500ns
+15:21:18.814554 [debug]: batch-consume loop (for res in reader) took 72.5µs
+15:21:18.814656 [debug]: do_execute(conn) (closure: stmt.execute + schema + batch loop) took 13.4548ms
+15:21:18.814673 [debug]: concat_batches + normalize_result_column_names took 5.5µs
+15:21:18.814681 [debug]: record_current_span_status_from_attrs took 3.8µs
+15:21:18.814691 [debug]: Query executed on node test.ecommerce_docs.relationships_stg_order_items_product_id__product_id__ref_stg_products_.886a82c26c:
+/* {"app": "dbt", "dbt_version": "2.0.0", "node_id": "test.ecommerce_docs.relationships_stg_order_items_product_id__product_id__ref_stg_products_.886a82c26c", "profile_name": "ecommerce_docs", "target_name": "dev"} */
+
+    
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+with child as (
+    select product_id as from_field
+    from "ecommerce"."main"."stg_order_items"
+    where product_id is not null
+),
+
+parent as (
+    select product_id as to_field
+    from "ecommerce"."main"."stg_products"
+)
+
+select
+    from_field
+
+from child
+left join parent
+    on child.from_field = parent.to_field
+
+where parent.to_field is null
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+15:21:18.814722 [debug]: drop(query_span_guard) (span exit/export) took 35.3µs
+15:21:18.815558 [info ]: Finished running [  0.02s] test main_dbt_test__audit.relationships_stg_order_items_product_id__product_id__ref_stg_products_ [pass]
+15:21:18.815716 [info ]: Finished running [  0.16s] (11 nodes, 0 skipped, 0 errors)
+15:21:18.816273 [info ]:     Passed test  relationships_stg_order_items_product_id__product_id__ref_stg_products_ [8 of 11 in 0.05s]
+15:21:19.334006 [info ]: New version available 2.0.11 (run `dbt system update`)
+15:21:19.368000 [info ]: 
+==================== Execution Summary =====================
+Finished 'build' successfully for target 'dev' [1.5s]
+Processed: 4 models | 7 tests
+Summary: 11 total | 11 success
+==================== 2026-11-06T15:25:02.048528Z | 01a1b176-98dd-7d12-bef4-0bd557e0c45b ====================
+15:25:02.205482 [info ]: Running compile; pass `--no-compile` to export the existing index instead.
+15:25:02.207528 [info ]: dbt 2.0.9
+15:25:02.208902 [debug]: Partial parse: kind filter = None, unique_id filter = None
+15:25:02.269828 [debug]: Partial parse: partial-load fast path — no file changes
+15:25:02.303701 [info ]: Started scheduling
+15:25:02.304407 [info ]: Finished scheduling [  0.00s]
+15:25:02.308616 [debug]: Initializing schema store with entry: Frontier(CanonicalFqn { catalog: "ecommerce", schema: "main", table: "raw_order_items" }) and interval: None
+15:25:02.308637 [debug]: Initializing schema store with entry: Frontier(CanonicalFqn { catalog: "ecommerce", schema: "main", table: "raw_customers" }) and interval: None
+15:25:02.308642 [debug]: Initializing schema store with entry: Frontier(CanonicalFqn { catalog: "ecommerce", schema: "main", table: "raw_products" }) and interval: None
+15:25:02.308645 [debug]: Initializing schema store with entry: Frontier(CanonicalFqn { catalog: "ecommerce", schema: "main", table: "raw_orders" }) and interval: None
+15:25:02.311211 [info ]: Started building task graph
+15:25:02.311556 [info ]: Finished building task graph [  0.00s]
+15:25:02.316325 [info ]: Started rendering (11 nodes)
+15:25:02.316539 [info ]: Started test main_dbt_test__audit.unique_stg_products_product_id
+15:25:02.316575 [debug]: Started rendering test main_dbt_test__audit.unique_stg_products_product_id
+15:25:02.316663 [info ]: Started test main_dbt_test__audit.unique_stg_order_items_order_item_id
+15:25:02.316674 [debug]: Started rendering test main_dbt_test__audit.unique_stg_order_items_order_item_id
+15:25:02.316691 [info ]: Started test main_dbt_test__audit.unique_stg_customers_customer_id
+15:25:02.316699 [debug]: Started rendering test main_dbt_test__audit.unique_stg_customers_customer_id
+15:25:02.316714 [info ]: Started test main_dbt_test__audit.relationships_stg_order_items_product_id__product_id__ref_stg_products_
+15:25:02.316722 [debug]: Started rendering test main_dbt_test__audit.relationships_stg_order_items_product_id__product_id__ref_stg_products_
+15:25:02.316749 [info ]: Started test main_dbt_test__audit.not_null_stg_products_product_id
+15:25:02.316791 [debug]: Started rendering test main_dbt_test__audit.not_null_stg_products_product_id
+15:25:02.316806 [info ]: Started test main_dbt_test__audit.not_null_stg_order_items_order_item_id
+15:25:02.316814 [debug]: Started rendering test main_dbt_test__audit.not_null_stg_order_items_order_item_id
+15:25:02.316849 [info ]: Started test main_dbt_test__audit.not_null_stg_customers_customer_id
+15:25:02.316859 [debug]: Started rendering test main_dbt_test__audit.not_null_stg_customers_customer_id
+15:25:02.316886 [info ]: Started model main.stg_products
+15:25:02.316896 [debug]: Started rendering model main.stg_products
+15:25:02.316921 [info ]: Started model main.stg_orders
+15:25:02.316940 [debug]: Started rendering model main.stg_orders
+15:25:02.316985 [info ]: Started model main.stg_order_items
+15:25:02.317067 [debug]: Started rendering model main.stg_order_items
+15:25:02.317110 [info ]: Started model main.stg_customers
+15:25:02.317128 [debug]: Started rendering model main.stg_customers
+15:25:02.324627 [debug]: Compiled SQL for node model.ecommerce_docs.stg_orders at target\compiled\ecommerce_docs\models\staging\stg_orders.sql
+15:25:02.324811 [debug]: Compiled SQL for node model.ecommerce_docs.stg_order_items at target\compiled\ecommerce_docs\models\staging\stg_order_items.sql
+15:25:02.324958 [debug]: Compiled SQL for node model.ecommerce_docs.stg_products at target\compiled\ecommerce_docs\models\staging\stg_products.sql
+15:25:02.326472 [debug]: Compiled SQL for node model.ecommerce_docs.stg_customers at target\compiled\ecommerce_docs\models\staging\stg_customers.sql
+15:25:02.325043 [debug]: Finished rendering [  0.01s] model main.stg_orders [success]
+15:25:02.327487 [info ]: Started analyzing (11 nodes)
+15:25:02.328868 [debug]: Started analyzing model main.stg_orders
+15:25:02.328998 [debug]: Finished rendering [  0.01s] model main.stg_order_items [success]
+15:25:02.329483 [debug]: Started analyzing model main.stg_order_items
+15:25:02.329566 [debug]: Finished rendering [  0.01s] model main.stg_products [success]
+15:25:02.330068 [debug]: Compiled SQL for node test.ecommerce_docs.relationships_stg_order_items_product_id__product_id__ref_stg_products_.886a82c26c at target\compiled\ecommerce_docs\target\generic_tests\relationships_stg_order_items_85fcc371bcae46211ede4a7fca07283f.sql
+15:25:02.330101 [debug]: Compiled SQL for node test.ecommerce_docs.unique_stg_customers_customer_id.c7614daada at target\compiled\ecommerce_docs\target\generic_tests\unique_stg_customers_customer_id.sql
+15:25:02.330097 [debug]: Started analyzing model main.stg_products
+15:25:02.330133 [debug]: Compiled SQL for node test.ecommerce_docs.not_null_stg_customers_customer_id.e2cfb1f9aa at target\compiled\ecommerce_docs\target\generic_tests\not_null_stg_customers_customer_id.sql
+15:25:02.329987 [debug]: Compiled SQL for node test.ecommerce_docs.unique_stg_order_items_order_item_id.90e333a108 at target\compiled\ecommerce_docs\target\generic_tests\unique_stg_order_items_order_item_id.sql
+15:25:02.330245 [debug]: Compiled SQL for node test.ecommerce_docs.unique_stg_products_product_id.7d950a1467 at target\compiled\ecommerce_docs\target\generic_tests\unique_stg_products_product_id.sql
+15:25:02.330618 [debug]: Compiled SQL for node test.ecommerce_docs.not_null_stg_products_product_id.6373b0acf3 at target\compiled\ecommerce_docs\target\generic_tests\not_null_stg_products_product_id.sql
+15:25:02.330155 [debug]: Finished rendering [  0.01s] model main.stg_customers [success]
+15:25:02.331198 [debug]: Compiled SQL for node test.ecommerce_docs.not_null_stg_order_items_order_item_id.26a7e2bc35 at target\compiled\ecommerce_docs\target\generic_tests\not_null_stg_order_items_order_item_id.sql
+15:25:02.331242 [debug]: Started analyzing model main.stg_customers
+15:25:02.331302 [debug]: Finished rendering [  0.01s] test main_dbt_test__audit.unique_stg_customers_customer_id [success]
+15:25:02.331907 [debug]: Started analyzing test main_dbt_test__audit.unique_stg_customers_customer_id
+15:25:02.331971 [debug]: Finished rendering [  0.02s] test main_dbt_test__audit.relationships_stg_order_items_product_id__product_id__ref_stg_products_ [success]
+15:25:02.332376 [debug]: Started analyzing test main_dbt_test__audit.relationships_stg_order_items_product_id__product_id__ref_stg_products_
+15:25:02.332473 [debug]: Finished rendering [  0.02s] test main_dbt_test__audit.not_null_stg_customers_customer_id [success]
+15:25:02.333022 [debug]: Started analyzing test main_dbt_test__audit.not_null_stg_customers_customer_id
+15:25:02.333091 [debug]: Finished rendering [  0.02s] test main_dbt_test__audit.unique_stg_order_items_order_item_id [success]
+15:25:02.333565 [debug]: Started analyzing test main_dbt_test__audit.unique_stg_order_items_order_item_id
+15:25:02.333625 [debug]: Finished rendering [  0.02s] test main_dbt_test__audit.unique_stg_products_product_id [success]
+15:25:02.333956 [debug]: Started analyzing test main_dbt_test__audit.unique_stg_products_product_id
+15:25:02.334011 [debug]: Finished rendering [  0.02s] test main_dbt_test__audit.not_null_stg_products_product_id [success]
+15:25:02.334309 [debug]: Started analyzing test main_dbt_test__audit.not_null_stg_products_product_id
+15:25:02.334372 [debug]: Finished rendering [  0.02s] test main_dbt_test__audit.not_null_stg_order_items_order_item_id [success]
+15:25:02.334643 [info ]: Finished rendering [  0.02s] (11 nodes, 0 skipped, 0 errors)
+15:25:02.335049 [debug]: Started analyzing test main_dbt_test__audit.not_null_stg_order_items_order_item_id
+15:25:02.341779 [debug]: Finished analyzing [  0.01s] model main.stg_products [success]
+15:25:02.343291 [info ]:  Succeeded model main.stg_products (view) [8 of 11 in 0.02s]
+15:25:02.344627 [debug]: Finished analyzing [  0.01s] model main.stg_customers [success]
+15:25:02.345014 [info ]:  Succeeded model main.stg_customers (view) [11 of 11 in 0.03s]
+15:25:02.346175 [debug]: Finished analyzing [  0.02s] model main.stg_orders [success]
+15:25:02.346550 [info ]:  Succeeded model main.stg_orders (view) [9 of 11 in 0.03s]
+15:25:02.347326 [debug]: Finished analyzing [  0.01s] test main_dbt_test__audit.not_null_stg_customers_customer_id [success]
+15:25:02.347746 [info ]:  Succeeded test  not_null_stg_customers_customer_id (models/staging/schema.yml:45:13) [7 of 11 in 0.03s]
+15:25:02.348496 [debug]: Finished analyzing [  0.01s] test main_dbt_test__audit.not_null_stg_products_product_id [success]
+15:25:02.349253 [info ]:  Succeeded test  not_null_stg_products_product_id (models/staging/schema.yml:59:13) [5 of 11 in 0.03s]
+15:25:02.350295 [debug]: Finished analyzing [  0.02s] model main.stg_order_items [success]
+15:25:02.350743 [info ]:  Succeeded model main.stg_order_items (view) [10 of 11 in 0.03s]
+15:25:02.351618 [debug]: Finished analyzing [  0.02s] test main_dbt_test__audit.not_null_stg_order_items_order_item_id [success]
+15:25:02.352071 [info ]:  Succeeded test  not_null_stg_order_items_order_item_id (models/staging/schema.yml:79:13) [6 of 11 in 0.03s]
+15:25:02.352763 [debug]: Finished analyzing [  0.02s] test main_dbt_test__audit.unique_stg_products_product_id [success]
+15:25:02.353056 [info ]:  Succeeded test  unique_stg_products_product_id (models/staging/schema.yml:58:13) [1 of 11 in 0.04s]
+15:25:02.353546 [debug]: Finished analyzing [  0.02s] test main_dbt_test__audit.unique_stg_order_items_order_item_id [success]
+15:25:02.353793 [info ]:  Succeeded test  unique_stg_order_items_order_item_id (models/staging/schema.yml:78:13) [2 of 11 in 0.04s]
+15:25:02.354273 [debug]: Finished analyzing [  0.02s] test main_dbt_test__audit.unique_stg_customers_customer_id [success]
+15:25:02.354660 [info ]:  Succeeded test  unique_stg_customers_customer_id (models/staging/schema.yml:44:13) [3 of 11 in 0.04s]
+15:25:02.355296 [debug]: Finished analyzing [  0.02s] test main_dbt_test__audit.relationships_stg_order_items_product_id__product_id__ref_stg_products_ [success]
+15:25:02.355704 [info ]: Finished analyzing [  0.03s] (11 nodes, 0 skipped, 0 errors)
+15:25:02.356160 [info ]:  Succeeded test  relationships_stg_order_items_product_id__product_id__ref_stg_products_ (models/staging/schema.yml:87:13) [4 of 11 in 0.04s]
+15:25:02.532587 [debug]: DuckDB driver resolved: duckdb_extended 0.21.0.dev+dbt0.0.31
+15:25:05.385750 [info ]: Generated C:\dbt_lab\Project4\target (reading info_schema/v1/) — no column lineage; rerun with `--static-analysis strict` to include it
+15:25:05.386325 [info ]: Host the contents of C:\dbt_lab\Project4\target on any static file server. Note that this publishes everything else in the target directory too, including compiled SQL and any stored test failures.
+15:25:05.421517 [info ]: 
+==================== Execution Summary =====================
+Finished 'docs' successfully [3.4s]
+==================== 2026-11-06T15:25:24.970230Z | 01a1b176-f267-7ae1-b0ee-fc2cf8de1fb6 ====================
+15:25:25.118050 [debug]: DuckDB driver resolved: duckdb_extended 0.21.0.dev+dbt0.0.31
+15:25:26.594639 [info ]: started
+15:26:09.095604 [info ]: shutdown signal received; draining in-flight requests
+15:26:09.149006 [info ]: 
+==================== Execution Summary =====================
+Finished 'docs' successfully [44.2s]
